@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Sniper
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : Windows
+> **Difficulte** : Medium
+> **HTB** : https://app.hackthebox.com/machines/Sniper
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---

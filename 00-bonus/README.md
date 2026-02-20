@@ -10,6 +10,6 @@ Cours supplementaires etudies en parallele de la certification CPTS.
 
 ## A ajouter
 
-<!-- Autres cours hors roadmap que tu pourrais suivre -->
+<!-- Autres cours hors roadmap a envisager -->
 - [ ] Stack-Based Buffer Overflows
 - [ ] Intro to Binary Exploitation

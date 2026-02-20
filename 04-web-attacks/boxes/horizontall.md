@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Horizontall
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : Linux
+> **Difficulte** : Easy
+> **HTB** : https://app.hackthebox.com/machines/Horizontall
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---

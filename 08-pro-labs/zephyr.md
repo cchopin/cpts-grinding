@@ -1,8 +1,9 @@
-# [NOM DU PRO LAB]
+# Zephyr
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Termine
+> **Difficulte** : Advanced
+> **HTB** : https://app.hackthebox.com/prolabs/overview/zephyr
 > **Flags trouves** : 0 / ?
-> **Difficulte** : Intermediate / Advanced
 
 ---
 

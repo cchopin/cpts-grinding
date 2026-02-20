@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Administrator
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : Windows
+> **Difficulte** : Medium
+> **HTB** : https://app.hackthebox.com/machines/Administrator
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---

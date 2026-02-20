@@ -1,8 +1,9 @@
-# [NOM DU PRO LAB]
+# Dante
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Termine
+> **Difficulte** : Intermediate
+> **HTB** : https://app.hackthebox.com/prolabs/overview/dante
 > **Flags trouves** : 0 / ?
-> **Difficulte** : Intermediate / Advanced
 
 ---
 

@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Soccer
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : Linux
+> **Difficulte** : Easy
+> **HTB** : https://app.hackthebox.com/machines/Soccer
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---

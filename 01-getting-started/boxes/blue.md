@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Blue
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : Windows
+> **Difficulte** : Easy
+> **HTB** : https://app.hackthebox.com/machines/Blue
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---

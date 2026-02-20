@@ -25,9 +25,9 @@
 
 ---
 
-## Notes personnelles
+## Notes
 
-<!-- Tes notes, astuces, erreurs courantes -->
+<!-- Notes, astuces, erreurs courantes -->
 
 ---
 

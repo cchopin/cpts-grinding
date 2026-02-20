@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Conceal
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : Windows
+> **Difficulte** : Hard
+> **HTB** : https://app.hackthebox.com/machines/Conceal
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---

@@ -145,10 +145,62 @@ _start:
 | `patch string 0x402000 "Patched!\x0a"` | Patcher une valeur en memoire |
 | `set $rdx=0x9` | Modifier la valeur d'un registre |
 
-### Formats d'examen memoire (`x/`)
-- **Count** : nombre d'unites a afficher
-- **Format** : `x` (hex), `s` (string), `i` (instruction)
-- **Size** : `b` (byte), `h` (halfword/2B), `w` (word/4B), `g` (giant/8B)
+### Commande `x/` (examine memory)
+
+Syntaxe : `x/[count][format][size] [adresse/registre]`
+
+```
+x/  [combien] [comment] [quelle taille]  [ou]
+     count     format     size             address
+
+x/    4          x          g              $rsp
+     "4 valeurs  en hex    de 8 bytes    depuis rsp"
+```
+
+#### Format (comment afficher)
+
+| Format | Description | Exemple |
+|--------|------------|---------|
+| `x` | Hexadecimal | `x/x $rax` -> `0x41` |
+| `d` | Decimal (signe) | `x/d $rax` -> `65` |
+| `u` | Decimal non-signe | `x/u $rax` -> `65` |
+| `s` | String (jusqu'au null byte) | `x/s $rsi` -> `"Hello HTB Academy!"` |
+| `i` | Instruction (desassemble) | `x/i $rip` -> `mov eax, 0x1` |
+| `c` | Caractere ASCII | `x/c $rax` -> `'A'` |
+| `t` | Binaire (bits) | `x/t $rax` -> `01000001` |
+| `o` | Octal | `x/o $rax` -> `0101` |
+| `a` | Adresse (avec symbole) | `x/a $rsp` -> `0x401000 <_start>` |
+
+#### Size (taille de chaque unite)
+
+| Size | Nom | Taille |
+|------|-----|--------|
+| `b` | byte | 1 octet |
+| `h` | halfword | 2 octets |
+| `w` | word | 4 octets |
+| `g` | giant | 8 octets (le plus courant en x86_64) |
+
+#### Exemples concrets
+
+```bash
+# Strings
+x/s  $rsi              # string pointee par rsi
+x/s  0x402000          # string a une adresse
+x/20c 0x402000         # 20 caracteres un par un
+
+# Stack
+x/8xg $rsp             # 8 elements de la stack en hex (64-bit)
+x/8dg $rsp             # pareil en decimal
+
+# Code / Instructions
+x/i  $rip              # prochaine instruction
+x/10i $rip             # 10 prochaines instructions
+x/5i  _start           # 5 premieres instructions de _start
+
+# Binaire (utile pour les bitwise ops)
+x/t  $rax              # valeur de rax en binaire
+x/4tb $rax             # 4 bytes en binaire
+```
 
 ---
 
@@ -469,5 +521,3 @@ gdb -q ./program
 ```
 
 ---
-
-*Cheatsheet generee a partir du module HTB Academy "Intro to Assembly Language" (Module 85)*

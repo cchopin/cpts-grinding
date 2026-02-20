@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Intelligence
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : Windows
+> **Difficulte** : Medium
+> **HTB** : https://app.hackthebox.com/machines/Intelligence
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---

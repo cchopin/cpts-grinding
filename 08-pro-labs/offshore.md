@@ -1,8 +1,9 @@
-# [NOM DU PRO LAB]
+# Offshore
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Termine
+> **Difficulte** : Advanced
+> **HTB** : https://app.hackthebox.com/prolabs/overview/offshore
 > **Flags trouves** : 0 / ?
-> **Difficulte** : Intermediate / Advanced
 
 ---
 

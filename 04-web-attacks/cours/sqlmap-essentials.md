@@ -1,7 +1,7 @@
-# [NOM DU COURS]
+# SQLMap Essentials
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Termine
-> **Module HTB Academy** : [lien]
+> **HTB Academy** : https://academy.hackthebox.com/module/details/58
 
 ---
 
@@ -25,9 +25,9 @@
 
 ---
 
-## Notes personnelles
+## Notes
 
-<!-- Tes notes, astuces, erreurs courantes -->
+<!-- Notes, astuces, erreurs courantes -->
 
 ---
 

@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Sense
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : FreeBSD
+> **Difficulte** : Easy
+> **HTB** : https://app.hackthebox.com/machines/Sense
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---

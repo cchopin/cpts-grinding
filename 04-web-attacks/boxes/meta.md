@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Meta
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : Linux
+> **Difficulte** : Medium
+> **HTB** : https://app.hackthebox.com/machines/Meta
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---

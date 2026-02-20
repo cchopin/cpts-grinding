@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Nibbles
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : Linux
+> **Difficulte** : Easy
+> **HTB** : https://app.hackthebox.com/machines/Nibbles
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---

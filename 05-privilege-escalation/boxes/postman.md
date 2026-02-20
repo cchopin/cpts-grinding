@@ -1,8 +1,10 @@
-# [NOM DE LA BOX]
+# Postman
 
 > **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
-> **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **OS** : Linux
+> **Difficulte** : Easy
+> **HTB** : https://app.hackthebox.com/machines/Postman
+> **Difficulte ressentie** : ?/10
 > **IP** :
 
 ---
