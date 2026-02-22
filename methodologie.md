@@ -1,6 +1,6 @@
-# Methodologie Pentest
+# Méthodologie Pentest
 
-> Checklist a suivre sur chaque box / engagement
+> Checklist à suivre sur chaque box / engagement
 
 ---
 
@@ -9,12 +9,12 @@
 - [ ] **Nmap** : scan complet TCP (`-sC -sV -p-`)
 - [ ] **Nmap** : scan UDP top 50 (`-sU --top-ports 50`)
 - [ ] **Ajouter** le hostname dans `/etc/hosts` si besoin
-- [ ] **Identifier** l'OS et la version (TTL, banniere, nmap)
+- [ ] **Identifier** l'OS et la version (TTL, bannière, nmap)
 - [ ] **Noter** tous les ports ouverts et services
 
 ---
 
-## Phase 2 : Enumeration
+## Phase 2 : Énumération
 
 ### Par service
 - [ ] **Web (80/443)** : whatweb, ffuf (dirs + fichiers + vhosts), nikto, code source
@@ -27,37 +27,37 @@
 - [ ] **MSSQL (1433)** : login, xp_cmdshell
 - [ ] **WinRM (5985)** : evil-winrm si creds
 
-### Web specifique
+### Web spécifique
 - [ ] **Technos** : langage, framework, CMS, version
-- [ ] **Login pages** : creds par defaut, brute force, SQLi
+- [ ] **Login pages** : creds par défaut, brute force, SQLi
 - [ ] **Input fields** : SQLi, XSS, command injection, SSTI
 - [ ] **Upload** : tester bypass d'extension et de content-type
 - [ ] **LFI/RFI** : traversal, wrappers PHP, log poisoning
-- [ ] **API** : endpoints, documentation, parametres caches
+- [ ] **API** : endpoints, documentation, paramètres cachés
 
 ---
 
 ## Phase 3 : Exploitation
 
 - [ ] **Chercher** les exploits connus (searchsploit, Google, CVE)
-- [ ] **Tester** les creds par defaut
+- [ ] **Tester** les creds par défaut
 - [ ] **Obtenir** un shell (reverse shell / web shell / bind shell)
 - [ ] **Stabiliser** le shell (pty, stty)
-- [ ] **Recuperer** le flag user
+- [ ] **Récupérer** le flag user
 
 ---
 
 ## Phase 4 : Post-Exploitation
 
-### Enumeration locale
+### Énumération locale
 - [ ] `whoami /all` ou `id`
-- [ ] Fichiers sensibles (configs, cles SSH, credentials)
+- [ ] Fichiers sensibles (configs, clés SSH, credentials)
 - [ ] Processus en cours / services internes
-- [ ] Connexions reseau internes (`netstat -tlnp`)
-- [ ] Taches planifiees (cron / scheduled tasks)
+- [ ] Connexions réseau internes (`netstat -tlnp`)
+- [ ] Tâches planifiées (cron / scheduled tasks)
 - [ ] LinPEAS / WinPEAS
 
-### Privilege Escalation Linux
+### Élévation de privilèges Linux
 - [ ] `sudo -l`
 - [ ] SUID/SGID binaries (`find / -perm -4000 2>/dev/null`)
 - [ ] Capabilities (`getcap -r / 2>/dev/null`)
@@ -66,9 +66,9 @@
 - [ ] Fichiers writables dans PATH
 - [ ] Docker / LXC group
 
-### Privilege Escalation Windows
+### Élévation de privilèges Windows
 - [ ] `whoami /priv` (SeImpersonate, SeBackup, etc.)
-- [ ] Services mal configures (unquoted paths, writable dirs)
+- [ ] Services mal configurés (unquoted paths, writable dirs)
 - [ ] AlwaysInstallElevated
 - [ ] Stored credentials (`cmdkey /list`)
 - [ ] SAM / SYSTEM / SECURITY dumps
@@ -82,7 +82,7 @@
 - [ ] **Enum** : BloodHound, ldapsearch, crackmapexec
 - [ ] **Users** : AS-REP Roastable, Kerberoastable
 - [ ] **Shares** : fichiers sensibles, scripts, GPP
-- [ ] **Delegation** : constrained, unconstrained, RBCD
+- [ ] **Délégation** : constrained, unconstrained, RBCD
 - [ ] **Creds** : spray, relay, dump NTDS
 - [ ] **Lateral movement** : psexec, wmiexec, evil-winrm, RDP
 - [ ] **Domain admin** : DCSync, Golden Ticket, Silver Ticket
@@ -91,17 +91,17 @@
 
 ## Phase 6 : Pivoting (si multi-network)
 
-- [ ] **Identifier** les interfaces reseau supplementaires
-- [ ] **Scanner** le reseau interne
+- [ ] **Identifier** les interfaces réseau supplémentaires
+- [ ] **Scanner** le réseau interne
 - [ ] **Tunnel** : chisel, ligolo-ng, SSH, proxychains
-- [ ] **Repeter** les phases 1-5 sur les nouvelles cibles
+- [ ] **Répéter** les phases 1-5 sur les nouvelles cibles
 
 ---
 
 ## Phase 7 : Loot & Documentation
 
 - [ ] **Flags** : user.txt, root.txt
-- [ ] **Screenshots** des etapes cles
+- [ ] **Screenshots** des étapes clés
 - [ ] **Noter** le chemin d'attaque complet
-- [ ] **Lecons apprises** : ce qui a marche, ce qui a bloque
+- [ ] **Leçons apprises** : ce qui a marché, ce qui a bloqué
 - [ ] **Commit** la writeup dans le repo

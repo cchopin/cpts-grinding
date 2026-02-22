@@ -1,10 +1,10 @@
 # Legacy
 
-> **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
+> **Statut** : [ ] Non commencé | [ ] En cours | [ ] Root
 > **OS** : Windows
-> **Difficulte** : Easy
+> **Difficulté** : Easy
 > **HTB** : https://app.hackthebox.com/machines/Legacy
-> **Difficulte ressentie** : ?/10
+> **Difficulté ressentie** : ?/10
 > **IP** :
 
 ---
@@ -16,7 +16,7 @@
 
 ```
 
-### Enumeration
+### Énumération
 
 ---
 
@@ -30,7 +30,7 @@
 
 ## Privilege Escalation
 
-### Enumeration locale
+### Énumération locale
 
 ### Escalade
 
@@ -43,6 +43,6 @@
 
 ---
 
-## Lecons apprises
+## Leçons apprises
 
 -

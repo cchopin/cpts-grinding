@@ -1,6 +1,6 @@
 # Journal de progression
 
-> Log des sessions de grinding. Noter ce qui a ete fait, ce qui a bloque, et les lecons du jour.
+> Log des sessions de grinding. Noter ce qui a été fait, ce qui a bloqué, et les leçons du jour.
 
 ---
 
@@ -8,10 +8,10 @@
 
 ```
 ### YYYY-MM-DD
-**Duree** :
+**Durée** :
 **Focus** :
 - [ ] ...
-**Bloque sur** :
+**Bloqué sur** :
 **Appris** :
 ```
 

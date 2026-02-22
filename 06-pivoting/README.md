@@ -8,11 +8,11 @@
 
 ## Boxes
 
-| # | Box | OS | Difficulte | User | Root |
+| # | Box | OS | Difficulté | User | Root |
 |---|-----|----|------------|------|------|
 | 1 | [Reddish](boxes/reddish.md) | Linux | Insane | [ ] | [ ] |
 
-## Techniques cles
+## Techniques clés
 
 - SSH Tunneling (Local / Remote / Dynamic)
 - Chisel / Ligolo-ng

@@ -1,34 +1,34 @@
 # Tools - Shellcoding Workflow
 
-Scripts utilitaires pour le workflow de shellcoding. Prerequis : `pwntools` (`pip3 install pwntools`).
+Scripts utilitaires pour le workflow de shellcoding. Prérequis : `pwntools` (`pip3 install pwntools`).
 
-## Workflow en 4 etapes
+## Workflow en 4 étapes
 
 ```
  program.s ──► assembler.sh ──► shellcoder.py ──► loader.py ──► assembler.py
   (code ASM)    (compile+run)    (extract sc)     (exec sc)     (sc -> ELF + gdb)
-   etape 1        etape 2          etape 3         etape 4        si debug
+   étape 1        étape 2          étape 3         étape 4        si debug
 ```
 
-### Etape 1 - Ecrire le code ASM
+### Étape 1 - Écrire le code ASM
 
 ```bash
 vim program.s
 ```
 
-### Etape 2 - Assembler et tester
+### Étape 2 - Assembler et tester
 
 ```bash
 ./assembler.sh program.s
-# -> assemble (nasm), link (ld), execute le binaire
+# -> assemble (nasm), link (ld), exécute le binaire
 ```
 
-### Etape 3 - Extraire et valider le shellcode
+### Étape 3 - Extraire et valider le shellcode
 
 ```bash
 python3 shellcoder.py program
-# -> affiche le shellcode hex + verifie les NULL bytes
-# Si NULL bytes detectes : corriger le code ASM et recommencer etape 1
+# -> affiche le shellcode hex + vérifie les NULL bytes
+# Si NULL bytes détectés : corriger le code ASM et recommencer étape 1
 ```
 
 Alternative sans pwntools :
@@ -36,11 +36,11 @@ Alternative sans pwntools :
 ./shellcoder.sh program
 ```
 
-### Etape 4 - Executer le shellcode en memoire
+### Étape 4 - Exécuter le shellcode en mémoire
 
 ```bash
 python3 loader.py '4831db66bb...'
-# -> charge et execute le shellcode directement en memoire
+# -> charge et exécute le shellcode directement en mémoire
 ```
 
 ### Debug (optionnel) - Reconvertir en ELF pour gdb
@@ -52,12 +52,12 @@ gdb -q ./program_dbg
 (gdb) r
 ```
 
-## Resume des scripts
+## Résumé des scripts
 
 | Script | Input | Output | Description |
 |--------|-------|--------|-------------|
-| `assembler.sh` | `fichier.s` | binaire ELF | Assemble + link + execute |
+| `assembler.sh` | `fichier.s` | binaire ELF | Assemble + link + exécute |
 | `shellcoder.py` | binaire ELF | shellcode hex | Extrait `.text` + check NULL |
 | `shellcoder.sh` | binaire ELF | shellcode hex | Idem via objdump (sans pwntools) |
-| `loader.py` | shellcode hex | execution | Charge en memoire et execute |
+| `loader.py` | shellcode hex | exécution | Charge en mémoire et exécute |
 | `assembler.py` | shellcode hex + nom | binaire ELF | Reconstruit un ELF pour debug |

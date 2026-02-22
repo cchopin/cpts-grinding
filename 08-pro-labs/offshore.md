@@ -1,41 +1,41 @@
 # Offshore
 
-> **Statut** : [ ] Non commence | [ ] En cours | [ ] Termine
-> **Difficulte** : Advanced
+> **Statut** : [ ] Non commencé | [ ] En cours | [ ] Terminé
+> **Difficulté** : Advanced
 > **HTB** : https://app.hackthebox.com/prolabs/overview/offshore
-> **Flags trouves** : 0 / ?
+> **Flags trouvés** : 0 / ?
 
 ---
 
-## Topologie reseau
+## Topologie réseau
 
-<!-- Schema ou description du reseau -->
+<!-- Schéma ou description du réseau -->
 
 ---
 
 ## Machines compromises
 
-| Machine | IP | OS | Methode | User | Root |
+| Machine | IP | OS | Méthode | User | Root |
 |---------|----|----|---------|------|------|
 
 ---
 
 ## Chemin d'attaque
 
-### Phase 1 : Perimetre externe
+### Phase 1 : Périmètre externe
 
-### Phase 2 : Mouvement lateral
+### Phase 2 : Mouvement latéral
 
 ### Phase 3 : Domaine
 
 ---
 
-## Outils utilises
+## Outils utilisés
 
 -
 
 ---
 
-## Lecons apprises
+## Leçons apprises
 
 -

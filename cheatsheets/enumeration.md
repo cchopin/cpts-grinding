@@ -1,8 +1,8 @@
-# Enumeration
+# Énumération
 
 ---
 
-## Reconnaissance reseau
+## Reconnaissance réseau
 
 ```bash
 # Scan complet
@@ -14,7 +14,7 @@ nmap -sC -sV TARGET_IP
 # UDP
 sudo nmap -sU --top-ports 50 TARGET_IP
 
-# Scan reseau (sweep)
+# Scan réseau (sweep)
 nmap -sn 10.10.10.0/24
 ```
 
@@ -22,7 +22,7 @@ nmap -sn 10.10.10.0/24
 
 ## Web
 
-### Enumeration de base
+### Énumération de base
 ```bash
 # Technos
 whatweb http://TARGET_IP
@@ -64,7 +64,7 @@ smbclient -L //TARGET_IP -N
 crackmapexec smb TARGET_IP --shares
 smbmap -H TARGET_IP
 
-# Connexion a un share
+# Connexion à un share
 smbclient //TARGET_IP/share -N
 smbclient //TARGET_IP/share -U 'user%password'
 
@@ -74,7 +74,7 @@ rpcclient -U "" -N TARGET_IP
 > enumdomusers
 > enumdomgroups
 
-# Enum avec creds
+# Énumération avec creds
 crackmapexec smb TARGET_IP -u user -p password --shares
 ```
 
@@ -83,13 +83,13 @@ crackmapexec smb TARGET_IP -u user -p password --shares
 ## LDAP (389)
 
 ```bash
-# Enum anonyme
+# Énumération anonyme
 ldapsearch -x -H ldap://TARGET_IP -b "DC=domain,DC=htb"
 
 # Avec creds
 ldapsearch -x -H ldap://TARGET_IP -D "user@domain.htb" -w 'password' -b "DC=domain,DC=htb"
 
-# Enum users
+# Énumération users
 ldapsearch -x -H ldap://TARGET_IP -b "DC=domain,DC=htb" "(objectClass=user)" sAMAccountName
 ```
 
@@ -146,7 +146,7 @@ uname -a
 cat /etc/os-release
 ip a
 
-# Automatise
+# Automatisé
 ./linpeas.sh
 ./linux-exploit-suggester.sh
 ```
@@ -159,7 +159,7 @@ ipconfig /all
 net user
 net localgroup administrators
 
-:: Automatise
+:: Automatisé
 .\winPEASx64.exe
 .\Seatbelt.exe -group=all
 powershell -ep bypass -c ". .\PowerUp.ps1; Invoke-AllChecks"

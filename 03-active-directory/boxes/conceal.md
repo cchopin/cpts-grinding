@@ -1,10 +1,10 @@
 # Conceal
 
-> **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
+> **Statut** : [ ] Non commencé | [ ] En cours | [ ] Root
 > **OS** : Windows
-> **Difficulte** : Hard
+> **Difficulté** : Hard
 > **HTB** : https://app.hackthebox.com/machines/Conceal
-> **Difficulte ressentie** : ?/10
+> **Difficulté ressentie** : ?/10
 > **IP** :
 
 ---
@@ -16,7 +16,7 @@
 
 ```
 
-### Enumeration
+### Énumération
 
 ---
 
@@ -30,7 +30,7 @@
 
 ## Privilege Escalation
 
-### Enumeration locale
+### Énumération locale
 
 ### Escalade
 
@@ -43,6 +43,6 @@
 
 ---
 
-## Lecons apprises
+## Leçons apprises
 
 -

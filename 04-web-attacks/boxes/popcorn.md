@@ -1,10 +1,10 @@
 # Popcorn
 
-> **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
+> **Statut** : [ ] Non commencé | [ ] En cours | [ ] Root
 > **OS** : Linux
-> **Difficulte** : Medium
+> **Difficulté** : Medium
 > **HTB** : https://app.hackthebox.com/machines/Popcorn
-> **Difficulte ressentie** : ?/10
+> **Difficulté ressentie** : ?/10
 > **IP** :
 
 ---
@@ -16,7 +16,7 @@
 
 ```
 
-### Enumeration
+### Énumération
 
 ---
 
@@ -30,7 +30,7 @@
 
 ## Privilege Escalation
 
-### Enumeration locale
+### Énumération locale
 
 ### Escalade
 
@@ -43,6 +43,6 @@
 
 ---
 
-## Lecons apprises
+## Leçons apprises
 
 -

@@ -12,7 +12,7 @@
 
 ## Boxes
 
-| # | Box | OS | Difficulte | User | Root |
+| # | Box | OS | Difficulté | User | Root |
 |---|-----|----|------------|------|------|
 | 1 | [Blue](boxes/blue.md) | Windows | Easy | [ ] | [ ] |
 | 2 | [Devel](boxes/devel.md) | Windows | Easy | [ ] | [ ] |
@@ -24,11 +24,11 @@
 | 8 | [Nibbles](boxes/nibbles.md) | Linux | Easy | [ ] | [ ] |
 | 9 | [Shocker](boxes/shocker.md) | Linux | Easy | [ ] | [ ] |
 
-## Ordre recommande
+## Ordre recommandé
 
-1. Penetration Testing Process (theorie)
-2. Network Enumeration with Nmap (scan reseau)
-3. Footprinting (enumeration services)
-4. Information Gathering - Web Edition (enumeration web)
+1. Penetration Testing Process (théorie)
+2. Network Enumeration with Nmap (scan réseau)
+3. Footprinting (énumération services)
+4. Information Gathering - Web Edition (énumération web)
 5. Vulnerability Assessment (analyse de vulns)
 6. Boxes dans l'ordre : Lame -> Legacy -> Blue -> Devel -> Jerry -> Nibbles -> Shocker -> Mirai -> Netmon

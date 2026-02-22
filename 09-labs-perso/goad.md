@@ -1,6 +1,6 @@
 # GOAD - Game of Active Directory
 
-> **Statut** : [ ] Non commence | [ ] En cours | [ ] Termine
+> **Statut** : [ ] Non commencé | [ ] En cours | [ ] Terminé
 > **Repo** : https://github.com/Orange-Cyberdefense/GOAD
 > **Type** : Lab AD local (self-hosted)
 
@@ -8,7 +8,7 @@
 
 ## Description
 
-Lab Active Directory complet par Orange Cyberdefense. Environnement multi-domaine avec plusieurs forets AD, trusts, et de nombreux vecteurs d'attaque.
+Lab Active Directory complet par Orange Cyberdefense. Environnement multi-domaine avec plusieurs forêts AD, trusts, et de nombreux vecteurs d'attaque.
 
 ---
 
@@ -22,26 +22,26 @@ Lab Active Directory complet par Orange Cyberdefense. Environnement multi-domain
 
 ## Machines / Domaines
 
-| Machine | Role | IP | Compromis |
+| Machine | Rôle | IP | Compromis |
 |---------|------|----|-----------|
 
 ---
 
 ## Chemin d'attaque
 
-### Enumeration initiale
+### Énumération initiale
 
 ### Exploitation
 
-### Mouvement lateral
+### Mouvement latéral
 
 ### Domination du domaine
 
 ---
 
-## Techniques pratiquees
+## Techniques pratiquées
 
-- [ ] Enumeration LDAP / SMB
+- [ ] Énumération LDAP / SMB
 - [ ] AS-REP Roasting
 - [ ] Kerberoasting
 - [ ] Pass-the-Hash
@@ -53,6 +53,6 @@ Lab Active Directory complet par Orange Cyberdefense. Environnement multi-domain
 
 ---
 
-## Lecons apprises
+## Leçons apprises
 
 -

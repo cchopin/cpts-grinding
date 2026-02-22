@@ -9,7 +9,7 @@
 
 ## Boxes
 
-| # | Box | OS | Difficulte | User | Root |
+| # | Box | OS | Difficulté | User | Root |
 |---|-----|----|------------|------|------|
 | 1 | [Access](boxes/access.md) | Windows | Easy | [ ] | [ ] |
 | 2 | [Arctic](boxes/arctic.md) | Windows | Easy | [ ] | [ ] |
@@ -34,7 +34,7 @@
 ## Checklist Windows Privesc
 
 - [ ] `whoami /priv` / Token privileges
-- [ ] Services mal configures
+- [ ] Services mal configurés
 - [ ] Unquoted service paths
 - [ ] AlwaysInstallElevated
 - [ ] Stored credentials / SAM & SYSTEM

@@ -8,6 +8,7 @@
 
 | Section | Cours | Boxes/Labs | Avancement |
 |---------|-------|------------|------------|
+| [00 - Bonus (Assembly)](#00---bonus) | 3 cours | 31 boxes + 33 challenges | `[x]` |
 | [01 - Getting Started](#01---getting-started) | 5 cours | 9 boxes | `[ ]` |
 | [02 - Exploitation](#02---exploitation) | 5 cours | 3 boxes | `[ ]` |
 | [03 - Active Directory](#03---active-directory) | 1 cours | 13 boxes | `[ ]` |
@@ -17,7 +18,110 @@
 | [07 - Enterprise & Reporting](#07---enterprise--reporting) | 2 cours | - | `[ ]` |
 | [08 - Pro Labs](#08---pro-labs) | - | 3 labs | `[ ]` |
 | [09 - Labs Perso](#09---labs-perso) | - | 1 lab | `[ ]` |
-| [00 - Bonus (Assembly)](#00---bonus) | 1 cours | - | `[ ]` |
+
+---
+
+## 00 - Bonus
+
+### Assembly (hors roadmap CPTS)
+- [x] [Intro to Assembly Language](00-bonus/assembly/intro-to-assembly-language.md) | [HTB Academy](https://academy.hackthebox.com/module/details/85)
+- [x] [Shellcoding](00-bonus/assembly/shellcoding.md)
+- [x] [Shellcodes Reference](00-bonus/assembly/shellcodes-reference.md)
+
+### Ressources associées
+
+#### Machines HTB
+
+| # | Machine | Difficulté | Statut |
+|---|---------|------------|--------|
+| 1 | [Buff](https://app.hackthebox.com/machines/263) | Easy | [ ] |
+| 2 | [Frolic](https://app.hackthebox.com/machines/158) | Easy | [ ] |
+| 3 | [Irked](https://app.hackthebox.com/machines/163) | Easy | [ ] |
+| 4 | [Nest](https://app.hackthebox.com/machines/225) | Easy | [ ] |
+| 5 | [Safe](https://app.hackthebox.com/machines/199) | Easy | [ ] |
+| 6 | [Shoppy](https://app.hackthebox.com/machines/496) | Easy | [ ] |
+| 7 | [Support](https://app.hackthebox.com/machines/484) | Easy | [ ] |
+| 8 | [Faculty](https://app.hackthebox.com/machines/480) | Medium | [ ] |
+| 9 | [Retired](https://app.hackthebox.com/machines/456) | Medium | [ ] |
+| 10 | [OpenKeyS](https://app.hackthebox.com/machines/267) | Medium | [ ] |
+| 11 | [October](https://app.hackthebox.com/machines/15) | Medium | [ ] |
+| 12 | [Rainbow](https://app.hackthebox.com/machines/690) | Medium | [ ] |
+| 13 | [Dab](https://app.hackthebox.com/machines/150) | Hard | [ ] |
+| 14 | [Ellingson](https://app.hackthebox.com/machines/189) | Hard | [ ] |
+| 15 | [Patents](https://app.hackthebox.com/machines/224) | Hard | [ ] |
+| 16 | [Static](https://app.hackthebox.com/machines/355) | Hard | [ ] |
+| 17 | [Developer](https://app.hackthebox.com/machines/372) | Hard | [ ] |
+| 18 | [Hancliffe](https://app.hackthebox.com/machines/388) | Hard | [ ] |
+| 19 | [Overflow](https://app.hackthebox.com/machines/399) | Hard | [ ] |
+| 20 | [Drive](https://app.hackthebox.com/machines/570) | Hard | [ ] |
+| 21 | [Napper](https://app.hackthebox.com/machines/575) | Hard | [ ] |
+| 22 | [RainbowTwo](https://app.hackthebox.com/machines/743) | Hard | [ ] |
+| 23 | [Smasher](https://app.hackthebox.com/machines/141) | Insane | [ ] |
+| 24 | [BigHead](https://app.hackthebox.com/machines/164) | Insane | [ ] |
+| 25 | [Smasher2](https://app.hackthebox.com/machines/191) | Insane | [ ] |
+| 26 | [Rope](https://app.hackthebox.com/machines/200) | Insane | [ ] |
+| 27 | [PlayerTwo](https://app.hackthebox.com/machines/221) | Insane | [ ] |
+| 28 | [RopeTwo](https://app.hackthebox.com/machines/260) | Insane | [ ] |
+| 29 | [Attended](https://app.hackthebox.com/machines/307) | Insane | [ ] |
+| 30 | [Reaper](https://app.hackthebox.com/machines/706) | Insane | [ ] |
+| 31 | [ReaperTwo](https://app.hackthebox.com/machines/772) | Insane | [ ] |
+
+#### Challenges HTB (Reversing)
+
+| # | Challenge | Difficulté | Statut |
+|---|-----------|------------|--------|
+| 1 | [The Art of Reversing](https://app.hackthebox.com/challenges/2) | Easy | [ ] |
+| 2 | [Tear Or Dear](https://app.hackthebox.com/challenges/3) | Easy | [ ] |
+| 3 | [Find The Easy Pass](https://app.hackthebox.com/challenges/5) | Easy | [ ] |
+| 4 | [Eat the Cake!](https://app.hackthebox.com/challenges/12) | Easy | [ ] |
+| 5 | [Impossible Password](https://app.hackthebox.com/challenges/26) | Easy | [ ] |
+| 6 | [Baby RE](https://app.hackthebox.com/challenges/92) | Easy | [ ] |
+| 7 | [Bypass](https://app.hackthebox.com/challenges/114) | Easy | [ ] |
+| 8 | [Exatlon](https://app.hackthebox.com/challenges/121) | Easy | [ ] |
+| 9 | [Ransom](https://app.hackthebox.com/challenges/166) | Easy | [ ] |
+| 10 | [You Cant C Me](https://app.hackthebox.com/challenges/209) | Easy | [ ] |
+| 11 | [Baby Crypt](https://app.hackthebox.com/challenges/210) | Easy | [ ] |
+| 12 | [Anti Flag](https://app.hackthebox.com/challenges/211) | Easy | [ ] |
+| 13 | [IRCWare](https://app.hackthebox.com/challenges/212) | Easy | [ ] |
+| 14 | [Sekure Decrypt](https://app.hackthebox.com/challenges/213) | Easy | [ ] |
+| 15 | [Hissss](https://app.hackthebox.com/challenges/214) | Easy | [ ] |
+| 16 | [RAuth](https://app.hackthebox.com/challenges/231) | Easy | [ ] |
+| 17 | [Partial Encryption](https://app.hackthebox.com/challenges/306) | Easy | [ ] |
+| 18 | [Rebuilding](https://app.hackthebox.com/challenges/352) | Easy | [ ] |
+| 19 | [Snakecode](https://app.hackthebox.com/challenges/357) | Easy | [ ] |
+| 20 | [Golfer - Part 1](https://app.hackthebox.com/challenges/378) | Easy | [ ] |
+| 21 | [Up a Stream](https://app.hackthebox.com/challenges/392) | Easy | [ ] |
+| 22 | [Spooky License](https://app.hackthebox.com/challenges/409) | Easy | [ ] |
+| 23 | [Ouija](https://app.hackthebox.com/challenges/410) | Easy | [ ] |
+| 24 | [Secured Transfer](https://app.hackthebox.com/challenges/425) | Easy | [ ] |
+| 25 | [Potion Master](https://app.hackthebox.com/challenges/433) | Easy | [ ] |
+| 26 | [Encryption Bot](https://app.hackthebox.com/challenges/453) | Easy | [ ] |
+| 27 | [ChromeMiner](https://app.hackthebox.com/challenges/399) | Easy | [ ] |
+| 28 | [Cyberpsychosis](https://app.hackthebox.com/challenges/536) | Easy | [ ] |
+| 29 | [Behind the Scenes](https://app.hackthebox.com/challenges/301) | Very Easy | [ ] |
+| 30 | [WIDE](https://app.hackthebox.com/challenges/351) | Very Easy | [ ] |
+| 31 | [Simple Encryptor](https://app.hackthebox.com/challenges/366) | Very Easy | [ ] |
+| 32 | [Hunting License](https://app.hackthebox.com/challenges/485) | Very Easy | [ ] |
+| 33 | [Shattered Tablet](https://app.hackthebox.com/challenges/486) | Very Easy | [ ] |
+
+#### Plateformes externes
+
+| # | Plateforme | URL | Description |
+|---|-----------|-----|-------------|
+| 1 | pwnable.kr | http://pwnable.kr/ | Challenges shellcoding/exploitation |
+| 2 | pwnable.tw | https://pwnable.tw/ | Challenges avancés |
+| 3 | Exploit Education | https://exploit.education/ | VMs Phoenix/Protostar/Fusion |
+| 4 | ROP Emporium | https://ropemporium.com/ | Challenges ROP progressifs |
+| 5 | Nightmare | https://guyinatuxedo.github.io/ | Cours/challenges pwn par difficulté |
+
+#### Modules HTB Academy (Binary Exploitation path)
+
+| # | Module | Difficulté | Tier | Statut |
+|---|--------|------------|------|--------|
+| 1 | [Intro to Assembly Language](https://academy.hackthebox.com/course/preview/intro-to-assembly-language) | Medium | II | [x] |
+| 2 | [Stack-Based Buffer Overflows on Linux x86](https://academy.hackthebox.com/course/preview/stack-based-buffer-overflows-on-linux-x86) | Medium | II | [ ] |
+| 3 | [Stack-Based Buffer Overflows on Windows x86](https://academy.hackthebox.com/course/preview/stack-based-buffer-overflows-on-windows-x86) | Medium | II | [ ] |
+| 4 | [Introduction to Binary Fuzzing](https://academy.hackthebox.com/course/preview/introduction-to-binary-fuzzing) | Hard | III | [ ] |
 
 ---
 
@@ -165,21 +269,14 @@
 
 ---
 
-## 00 - Bonus
-
-### Assembly (hors roadmap CPTS)
-- [x] [Intro to Assembly Language](00-bonus/assembly/intro-to-assembly-language.md) | [HTB Academy](https://academy.hackthebox.com/module/details/85)
-
----
-
 ## Outils transversaux
 
 | Ressource | Description |
 |-----------|-------------|
-| [Methodologie](methodologie.md) | Checklist pentest step-by-step |
+| [Méthodologie](methodologie.md) | Checklist pentest step-by-step |
 | [Journal](journal.md) | Log de progression par session |
 | [Ressources](ressources.md) | Bookmarks et outils essentiels |
-| [Wordlists](wordlists.md) | Reference des wordlists par usage |
+| [Wordlists](wordlists.md) | Référence des wordlists par usage |
 
 ### Cheatsheets transversales
 
@@ -201,10 +298,10 @@
 
 ## Comment utiliser ce repo
 
-1. **Methodologie** : Suivre `methodologie.md` comme checklist sur chaque box
+1. **Méthodologie** : Suivre `methodologie.md` comme checklist sur chaque box
 2. **Cheatsheets** : Chaque cours et box a son propre fichier `.md`
-3. **Progression** : Cocher les `[ ]` -> `[x]` dans ce README au fur et a mesure
+3. **Progression** : Cocher les `[ ]` -> `[x]` dans ce README au fur et à mesure
 4. **Journal** : Noter chaque session dans `journal.md`
-5. **Difficulte ressentie** : Noter `/10` dans chaque box pour suivre la progression
+5. **Difficulté ressentie** : Noter `/10` dans chaque box pour suivre la progression
 6. **Templates** : Utiliser `TEMPLATE_COURS.md`, `TEMPLATE_BOX.md` ou `TEMPLATE_PROLAB.md` pour ajouter du contenu
-7. **Commit regulier** : Commiter apres chaque cours/box termine pour garder un historique
+7. **Commit régulier** : Commiter après chaque cours/box terminé pour garder un historique

@@ -1,13 +1,13 @@
 # File Inclusion
 
-> **Statut** : [ ] Non commence | [ ] En cours | [ ] Termine
+> **Statut** : [ ] Non commencé | [ ] En cours | [ ] Terminé
 > **HTB Academy** : https://academy.hackthebox.com/module/details/23
 
 ---
 
-## Concepts cles
+## Concepts clés
 
-<!-- Resume des concepts importants du module -->
+<!-- Résumé des concepts importants du module -->
 
 ---
 

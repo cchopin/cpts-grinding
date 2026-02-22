@@ -18,7 +18,7 @@
 
 ## Boxes
 
-| # | Box | OS | Difficulte | User | Root |
+| # | Box | OS | Difficulté | User | Root |
 |---|-----|----|------------|------|------|
 | 1 | [Bashed](boxes/bashed.md) | Linux | Easy | [ ] | [ ] |
 | 2 | [Goodgames](boxes/goodgames.md) | Linux | Easy | [ ] | [ ] |
@@ -34,7 +34,7 @@
 | 12 | [Popcorn](boxes/popcorn.md) | Linux | Medium | [ ] | [ ] |
 | 13 | [Sniper](boxes/sniper.md) | Windows | Medium | [ ] | [ ] |
 
-## Ordre recommande
+## Ordre recommandé
 
 1. Using Web Proxies (Burp Suite)
 2. Attacking Web Applications with Ffuf (fuzzing)
@@ -46,4 +46,4 @@
 8. File Upload Attacks
 9. Web Attacks (IDOR, XXE, SSRF...)
 10. Attacking Common Applications
-11. Boxes par difficulte croissante
+11. Boxes par difficulté croissante

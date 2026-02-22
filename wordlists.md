@@ -1,6 +1,6 @@
 # Wordlists
 
-> Principalement depuis [SecLists](https://github.com/danielmiessler/SecLists) (pre-installe sur Kali/Parrot/PwnBox)
+> Principalement depuis [SecLists](https://github.com/danielmiessler/SecLists) (pré-installé sur Kali/Parrot/PwnBox)
 
 ---
 
@@ -19,7 +19,7 @@
 
 | Wordlist | Usage | Path |
 |----------|-------|------|
-| `names.txt` | Prenoms courants | `SecLists/Usernames/Names/names.txt` |
+| `names.txt` | Prénoms courants | `SecLists/Usernames/Names/names.txt` |
 | `top-usernames-shortlist.txt` | Top usernames | `SecLists/Usernames/top-usernames-shortlist.txt` |
 | `xato-net-10-million-usernames.txt` | Large enum users | `SecLists/Usernames/` |
 
@@ -34,7 +34,7 @@
 | `big.txt` | Dir fuzzing (large) | `SecLists/Discovery/Web-Content/` |
 | `common.txt` | Dir fuzzing (rapide) | `SecLists/Discovery/Web-Content/` |
 | `raft-medium-directories.txt` | Bonne alternative | `SecLists/Discovery/Web-Content/` |
-| `raft-medium-files.txt` | Fichiers specifiques | `SecLists/Discovery/Web-Content/` |
+| `raft-medium-files.txt` | Fichiers spécifiques | `SecLists/Discovery/Web-Content/` |
 
 ---
 
@@ -68,7 +68,7 @@ Ajouter avec `-e` (gobuster) ou en suffixe dans ffuf :
 ## Custom wordlists
 
 ```bash
-# CeWL : generer une wordlist depuis un site
+# CeWL : générer une wordlist depuis un site
 cewl http://TARGET_IP -m 5 -w cewl_wordlist.txt
 
 # Username generator depuis noms
@@ -83,7 +83,7 @@ crunch 8 8 -t @@@@2024 -o custom.txt
 
 ---
 
-## Ou les trouver
+## Où les trouver
 
 - **SecLists** : https://github.com/danielmiessler/SecLists
 - **PayloadsAllTheThings** : https://github.com/swisskyrepo/PayloadsAllTheThings

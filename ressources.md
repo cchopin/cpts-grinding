@@ -2,18 +2,18 @@
 
 ---
 
-## References rapides
+## Références rapides
 
 | Ressource | URL | Usage |
 |-----------|-----|-------|
 | **HackTricks** | https://book.hacktricks.wiki | Bible du pentest, tout y est |
 | **GTFOBins** | https://gtfobins.github.io | Privesc Linux via binaires (sudo, SUID, capabilities) |
-| **LOLBAS** | https://lolbas-project.github.io | Equivalent GTFOBins pour Windows |
+| **LOLBAS** | https://lolbas-project.github.io | Équivalent GTFOBins pour Windows |
 | **PayloadsAllTheThings** | https://github.com/swisskyrepo/PayloadsAllTheThings | Payloads pour toutes les vulns web |
-| **RevShells** | https://revshells.com | Generateur de reverse shells |
-| **CyberChef** | https://gchq.github.io/CyberChef | Encodage/decodage/crypto en ligne |
+| **RevShells** | https://revshells.com | Générateur de reverse shells |
+| **CyberChef** | https://gchq.github.io/CyberChef | Encodage/décodage/crypto en ligne |
 | **Crackstation** | https://crackstation.net | Lookup de hashes en ligne |
-| **ExploitDB** | https://exploit-db.com | Base de donnees d'exploits |
+| **ExploitDB** | https://exploit-db.com | Base de données d'exploits |
 
 ---
 
@@ -29,7 +29,7 @@
 
 ---
 
-## Privilege Escalation
+## Élévation de privilèges
 
 | Ressource | URL |
 |-----------|-----|
@@ -45,10 +45,10 @@
 
 | Outil | Usage |
 |-------|-------|
-| `nmap` | Scan reseau |
+| `nmap` | Scan réseau |
 | `ffuf` / `gobuster` | Fuzzing web |
 | `burpsuite` | Proxy web |
-| `sqlmap` | SQL injection automatisee |
+| `sqlmap` | SQL injection automatisée |
 | `hashcat` / `john` | Cracking de mots de passe |
 | `crackmapexec` / `netexec` | Enum & exploit AD/SMB |
 | `impacket` | Outils AD (psexec, secretsdump, etc.) |
@@ -56,7 +56,7 @@
 | `bloodhound` | Graphe AD |
 | `chisel` / `ligolo-ng` | Pivoting / tunneling |
 | `metasploit` | Framework d'exploitation |
-| `pwncat-cs` | Handler de reverse shell avance |
+| `pwncat-cs` | Handler de reverse shell avancé |
 | `responder` | Poisoning LLMNR/NBT-NS |
 
 ---
@@ -81,7 +81,7 @@
 
 | Ressource | URL |
 |-----------|-----|
-| **IppSec (videos)** | https://www.youtube.com/c/ippsec |
+| **IppSec (vidéos)** | https://www.youtube.com/c/ippsec |
 | **IppSec search** | https://ippsec.rocks |
 | **0xdf writeups** | https://0xdf.gitlab.io |
-| **HTB Official Writeups** | https://app.hackthebox.com (apres retired) |
+| **HTB Official Writeups** | https://app.hackthebox.com (après retired) |
