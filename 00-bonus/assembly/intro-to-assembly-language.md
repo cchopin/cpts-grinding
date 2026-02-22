@@ -412,78 +412,11 @@ section .text
 
 ---
 
-## 12. Shellcoding
-
-### Exigences d'un shellcode valide
-1. **Pas de variables** (pas de section `.data`)
-2. **Pas d'adresses memoire directes**
-3. **Pas de bytes NULL (`00`)** (termineraient une chaine)
-
-### Techniques pour eviter les variables
-```nasm
-; Methode : push les chaines sur la stack
-mov rbx, 'y!'
-push rbx
-mov rbx, 'B Academ'
-push rbx
-mov rbx, 'Hello HT'
-push rbx
-mov rsi, rsp            ; rsi pointe vers la chaine sur la stack
-```
-
-### Techniques pour eviter les NULL bytes
-```nasm
-; MAUVAIS (contient des 00) :
-mov rax, 0              ; b8 00 00 00 00
-
-; BON (pas de 00) :
-xor rax, rax            ; 48 31 c0
-
-; MAUVAIS :
-mov rdi, 1              ; bf 01 00 00 00
-
-; BON :
-xor rdi, rdi
-inc rdi                 ; ou : mov dil, 1
-```
-
-### Outils pwntools
-
-| Commande | Description |
-|----------|-------------|
-| `pwn asm 'push rax' -c 'amd64'` | Instruction -> shellcode |
-| `pwn disasm '50' -c 'amd64'` | Shellcode -> instruction |
-| `python3 shellcoder.py helloworld` | Extraire le shellcode d'un binaire |
-| `python3 loader.py '4831..0f05'` | Executer un shellcode |
-
-### Extraction du shellcode avec Python
-```python
-from pwn import *
-context(os="linux", arch="amd64")
-file = ELF('binary')
-shellcode = file.section(".text").hex()
-print(shellcode)
-```
-
-### Shellcraft (pwntools)
-
-| Commande | Description |
-|----------|-------------|
-| `pwn shellcraft -l 'amd64.linux'` | Lister les syscalls disponibles |
-| `pwn shellcraft amd64.linux.sh` | Generer un shellcode shell |
-| `pwn shellcraft amd64.linux.sh -r` | Executer le shellcode genere |
-
-### Msfvenom
-
-| Commande | Description |
-|----------|-------------|
-| `msfvenom -l payloads \| grep 'linux/x64'` | Lister les payloads |
-| `msfvenom -p 'linux/x64/exec' CMD='sh' -a 'x64' --platform 'linux' -f 'hex'` | Generer un shellcode |
-| `msfvenom -p 'linux/x64/exec' CMD='sh' -a 'x64' --platform 'linux' -f 'hex' -e 'x64/xor'` | Shellcode encode |
+> **Shellcoding** : Voir le fichier dedie [shellcoding.md](shellcoding.md) pour les techniques de shellcoding, scripts utilitaires et exemples complets.
 
 ---
 
-## 13. Recapitulatif rapide des instructions
+## 12. Recapitulatif rapide
 
 | Categorie | Instructions |
 |-----------|-------------|
@@ -498,7 +431,7 @@ print(shellcode)
 
 ---
 
-## 14. Workflow typique
+## 13. Workflow typique
 
 ```bash
 # 1. Ecrire le code assembly

@@ -61,6 +61,22 @@
 
 ---
 
+## Assembly & Shellcoding
+
+| Ressource | URL |
+|-----------|-----|
+| **Shell-Storm Shellcodes** | http://shell-storm.org/shellcode/ |
+| **Exploit-DB Shellcodes** | https://www.exploit-db.com/shellcodes |
+| **Defuse Online Assembler** | https://defuse.ca/online-x86-assembler.htm |
+| **Syscall Table (interactive)** | https://syscalls.mebeim.net/ |
+| **x86 Instruction Reference** | https://www.felixcloutier.com/x86/ |
+| **pwntools shellcraft** | https://docs.pwntools.com/en/stable/shellcraft.html |
+| **Nightmare (pwn course)** | https://guyinatuxedo.github.io/ |
+| **Exploit Education** | https://exploit.education/ |
+| **ROP Emporium** | https://ropemporium.com/ |
+
+---
+
 ## Writeups & Learning
 
 | Ressource | URL |
