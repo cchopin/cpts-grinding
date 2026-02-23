@@ -282,16 +282,20 @@
 
 | Cheatsheet | Description |
 |------------|-------------|
+| [Basics](cheatsheets/basics.md) | VPN, SSH, FTP, tmux, vim |
 | [Reverse Shells](cheatsheets/reverse-shells.md) | One-liners, msfvenom, upgrade shell |
 | [File Transfers](cheatsheets/file-transfers.md) | Transferts attacker <-> cible |
 | [Common Ports](cheatsheets/common-ports.md) | Ports, services et quoi tester |
 | [Enumeration](cheatsheets/enumeration.md) | Commandes d'enum par service |
-| [Payloads](cheatsheets/payloads.md) | Web shells, SQLi, XSS, LFI, injections |
+| [Payloads & Exploits](cheatsheets/payloads.md) | Searchsploit, Metasploit, web shells, SQLi, XSS, LFI |
+| [Privilege Escalation](cheatsheets/privilege-escalation.md) | sudo, SUID, cron, tokens Windows, potatoes |
+| [Assembly & Shellcoding](cheatsheets/assembly.md) | Registres, instructions x86_64, GDB, shellcraft, msfvenom |
 
 ### Scripts
 
-| Dossier | Description |
-|---------|-------------|
+| Script | Description |
+|--------|-------------|
+| [search.sh](scripts/search.sh) | Recherche rapide dans toutes les notes (`./scripts/search.sh <keyword>`) |
 | [scripts/](scripts/) | Scripts d'automatisation custom |
 
 ---

