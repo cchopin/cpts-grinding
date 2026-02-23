@@ -94,14 +94,20 @@ scp user@TARGET_IP:/etc/passwd ./passwd
 
 ---
 
-## Base64 (pas de transfert réseau)
+## Base64 (pas de transfert reseau)
 
 ```bash
 # Encoder sur la source
 base64 -w0 file.bin
 
-# Décoder sur la destination
+# Decoder sur la destination
 echo "BASE64_STRING" | base64 -d > file.bin
+
+# macOS : encoder + copier dans le presse-papier
+cat linpeas.sh | base64 | pbcopy
+# Puis sur la cible : coller le contenu
+echo "COLLER_ICI" | base64 -d > /tmp/linpeas.sh
+chmod +x /tmp/linpeas.sh
 
 # Windows
 [Convert]::ToBase64String([IO.File]::ReadAllBytes("C:\file.bin"))

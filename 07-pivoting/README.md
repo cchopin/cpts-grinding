@@ -1,18 +1,18 @@
-# 06 - Pivoting, Tunneling & Port Forwarding
+# 07 - Pivoting, Tunneling & Port Forwarding
 
 ## Cours
 
 | # | Module | Statut |
 |---|--------|--------|
-| 1 | [Pivoting, Tunneling and Port Forwarding](cours/pivoting-tunneling-port-forwarding.md) | [ ] |
+| 1 | [Pivoting, Tunneling and Port Forwarding](cours/01-pivoting-tunneling-port-forwarding.md) | [ ] |
 
 ## Boxes
 
-| # | Box | OS | Difficulté | User | Root |
+| # | Box | OS | Difficulte | User | Root |
 |---|-----|----|------------|------|------|
 | 1 | [Reddish](boxes/reddish.md) | Linux | Insane | [ ] | [ ] |
 
-## Techniques clés
+## Techniques cles
 
 - SSH Tunneling (Local / Remote / Dynamic)
 - Chisel / Ligolo-ng

@@ -23,6 +23,30 @@ ssh -p 2222 user@TARGET_IP            # port custom
 
 # FTP
 ftp TARGET_IP
+ftp -p TARGET_IP                      # mode passif
+```
+
+---
+
+## Netcat / Socat
+
+```bash
+# Banner grabbing
+nc -nv TARGET_IP 22
+nc TARGET_IP 80
+
+# Listener (reverse shell)
+nc -lvnp 4444
+rlwrap nc -lvnp 4444                  # avec readline (confort)
+
+# Connexion a un bind shell
+nc TARGET_IP 4444
+
+# Transfert de fichier (réception)
+nc -lvnp 9999 > received_file
+
+# Socat - listener avec TTY complet
+socat file:`tty`,raw,echo=0 tcp-listen:4444
 ```
 
 ---

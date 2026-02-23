@@ -4,22 +4,22 @@
 
 | # | Module | Statut |
 |---|--------|--------|
-| 1 | [Linux Privilege Escalation](cours/linux-privilege-escalation.md) | [ ] |
-| 2 | [Windows Privilege Escalation](cours/windows-privilege-escalation.md) | [ ] |
+| 1 | [Linux Privilege Escalation](cours/01-linux-privilege-escalation.md) | [ ] |
+| 2 | [Windows Privilege Escalation](cours/02-windows-privilege-escalation.md) | [ ] |
 
 ## Boxes
 
-| # | Box | OS | Difficulté | User | Root |
+| # | Box | OS | Difficulte | User | Root |
 |---|-----|----|------------|------|------|
-| 1 | [Access](boxes/access.md) | Windows | Easy | [ ] | [ ] |
-| 2 | [Arctic](boxes/arctic.md) | Windows | Easy | [ ] | [ ] |
-| 3 | [Beep](boxes/beep.md) | Linux | Easy | [ ] | [ ] |
-| 4 | [Grandpa](boxes/grandpa.md) | Windows | Easy | [ ] | [ ] |
-| 5 | [Granny](boxes/granny.md) | Windows | Easy | [ ] | [ ] |
-| 6 | [Optimum](boxes/optimum.md) | Windows | Easy | [ ] | [ ] |
-| 7 | [Postman](boxes/postman.md) | Linux | Easy | [ ] | [ ] |
-| 8 | [Sense](boxes/sense.md) | FreeBSD | Easy | [ ] | [ ] |
-| 9 | [Valentine](boxes/valentine.md) | Linux | Easy | [ ] | [ ] |
+| 1 | [Beep](boxes/beep.md) | Linux | Easy | [ ] | [ ] |
+| 2 | [Grandpa](boxes/grandpa.md) | Windows | Easy | [ ] | [ ] |
+| 3 | [Granny](boxes/granny.md) | Windows | Easy | [ ] | [ ] |
+| 4 | [Optimum](boxes/optimum.md) | Windows | Easy | [ ] | [ ] |
+| 5 | [Postman](boxes/postman.md) | Linux | Easy | [ ] | [ ] |
+| 6 | [Sense](boxes/sense.md) | FreeBSD | Easy | [ ] | [ ] |
+| 7 | [Valentine](boxes/valentine.md) | Linux | Easy | [ ] | [ ] |
+| 8 | [Access](boxes/access.md) | Windows | Easy | [ ] | [ ] |
+| 9 | [Arctic](boxes/arctic.md) | Windows | Easy | [ ] | [ ] |
 | 10 | [Bastard](boxes/bastard.md) | Windows | Medium | [ ] | [ ] |
 
 ## Checklist Linux Privesc
@@ -34,7 +34,7 @@
 ## Checklist Windows Privesc
 
 - [ ] `whoami /priv` / Token privileges
-- [ ] Services mal configurés
+- [ ] Services mal configures
 - [ ] Unquoted service paths
 - [ ] AlwaysInstallElevated
 - [ ] Stored credentials / SAM & SYSTEM

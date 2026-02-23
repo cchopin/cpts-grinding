@@ -17,6 +17,34 @@ cat /etc/os-release
 ./linux-exploit-suggester.sh
 ```
 
+### Kernel Exploits
+
+```bash
+# Identifier la version du kernel
+uname -r
+cat /etc/os-release
+
+# Chercher des exploits pour cette version
+searchsploit linux kernel <version>
+# Exemple : kernel 3.9.0-73 -> CVE-2016-5195 (DirtyCow)
+
+# linux-exploit-suggester
+./linux-exploit-suggester.sh
+```
+
+Attention : les kernel exploits peuvent rendre le système instable. A utiliser en dernier recours et avec accord du client.
+
+### Software vulnérable
+
+```bash
+# Lister les packages installés
+dpkg -l                               # Debian/Ubuntu
+rpm -qa                               # RHEL/CentOS
+
+# Chercher des exploits
+searchsploit <application> <version>
+```
+
 ### sudo
 
 ```bash
@@ -67,19 +95,32 @@ crontab -l
 getcap -r / 2>/dev/null
 ```
 
-### Fichiers intéressants
+### Fichiers intéressants & credentials exposés
 
 ```bash
-# Mots de passe
+# Mots de passe dans les configs
 cat /etc/shadow          # si lisible
 find / -name "*.bak" -o -name "*.old" -o -name "*.conf" 2>/dev/null
 grep -ri "password" /etc/ 2>/dev/null
 grep -ri "password" /home/ 2>/dev/null
-find / -name id_rsa 2>/dev/null
+grep -ri "password" /var/www/ 2>/dev/null
 
-# Historique
+# Fichiers de config courants
+cat /var/www/html/config.php
+cat /var/www/html/wp-config.php
+cat /etc/mysql/my.cnf
+
+# Historique (credentials en clair)
 cat ~/.bash_history
 cat ~/.mysql_history
+# Windows : PSReadLine
+cat C:\Users\<user>\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+
+# Clés SSH
+find / -name id_rsa 2>/dev/null
+find / -name authorized_keys 2>/dev/null
+
+# Toujours tester le PASSWORD REUSE entre services/users
 ```
 
 ### SSH key persistence
@@ -98,6 +139,15 @@ ssh root@TARGET_IP -i key
 ---
 
 ## Windows
+
+### Software vulnérable (Windows)
+
+```cmd
+:: Lister les programmes installés
+dir "C:\Program Files"
+dir "C:\Program Files (x86)"
+wmic product get name,version
+```
 
 ### Enumération rapide
 

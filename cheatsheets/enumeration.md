@@ -20,26 +20,57 @@ nmap -sn 10.10.10.0/24
 
 ---
 
+## Banner Grabbing
+
+```bash
+# Netcat
+nc -nv TARGET_IP 21
+nc -nv TARGET_IP 22
+
+# Nmap
+nmap -sV --script=banner -p21 TARGET_IP
+nmap -sV --script=banner -p21 10.10.10.0/24    # sur un range
+```
+
+---
+
 ## Web
 
 ### Énumération de base
 ```bash
-# Technos
+# Technos & headers
 whatweb http://TARGET_IP
-curl -I http://TARGET_IP
+whatweb --no-errors 10.10.10.0/24               # scan réseau
+curl -IL http://TARGET_IP                        # headers HTTP
 
 # Fuzzing directories
 ffuf -u http://TARGET_IP/FUZZ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
 gobuster dir -u http://TARGET_IP -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+feroxbuster -u http://TARGET_IP -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
 
 # Fuzzing fichiers
 ffuf -u http://TARGET_IP/FUZZ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -e .php,.html,.txt,.bak,.old
+feroxbuster -u http://TARGET_IP -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -x php,html,txt,bak,old
 
 # Sous-domaines (vhost)
 ffuf -u http://TARGET_IP -H "Host: FUZZ.target.htb" -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -fs SIZE_TO_FILTER
 
 # Nikto
 nikto -h http://TARGET_IP
+```
+
+### Sous-domaines DNS
+```bash
+gobuster dns -d domain.com -w /usr/share/SecLists/Discovery/DNS/namelist.txt
+```
+
+### Sources d'info passives
+```bash
+# Certificats SSL/TLS -> email, noms, sous-domaines (SAN)
+# robots.txt -> répertoires cachés, pages admin
+curl http://TARGET_IP/robots.txt
+
+# Code source (Ctrl+U dans Firefox) -> commentaires, credentials de test, chemins internes
 ```
 
 ### CMS

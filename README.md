@@ -1,6 +1,7 @@
 # cpts-grinding
 
 > Progression vers la certification **Certified Penetration Testing Specialist** (CPTS)
+> Path officiel : https://academy.hackthebox.com/path/preview/penetration-tester (28 modules)
 
 ---
 
@@ -9,32 +10,33 @@
 | Section | Cours | Boxes/Labs | Avancement |
 |---------|-------|------------|------------|
 | [00 - Bonus (Assembly)](#00---bonus) | 3 cours | 31 boxes + 33 challenges | `[x]` |
-| [01 - Getting Started](#01---getting-started) | 5 cours | 9 boxes | `[ ]` |
-| [02 - Exploitation](#02---exploitation) | 5 cours | 3 boxes | `[ ]` |
-| [03 - Active Directory](#03---active-directory) | 1 cours | 13 boxes | `[ ]` |
+| [01 - Introduction](#01---introduction) | 2 cours | 9 boxes | `[ ]` |
+| [02 - Reconnaissance](#02---reconnaissance) | 4 cours | - | `[ ]` |
+| [03 - Exploitation](#03---exploitation) | 5 cours | 3 boxes | `[ ]` |
 | [04 - Web Attacks](#04---web-attacks) | 11 cours | 13 boxes | `[ ]` |
 | [05 - Privilege Escalation](#05---privilege-escalation) | 2 cours | 10 boxes | `[ ]` |
-| [06 - Pivoting](#06---pivoting) | 1 cours | 1 box | `[ ]` |
-| [07 - Enterprise & Reporting](#07---enterprise--reporting) | 2 cours | - | `[ ]` |
-| [08 - Pro Labs](#08---pro-labs) | - | 3 labs | `[ ]` |
-| [09 - Labs Perso](#09---labs-perso) | - | 1 lab | `[ ]` |
+| [06 - Active Directory](#06---active-directory) | 1 cours | 13 boxes | `[ ]` |
+| [07 - Pivoting](#07---pivoting) | 1 cours | 1 box | `[ ]` |
+| [08 - Enterprise & Reporting](#08---enterprise--reporting) | 2 cours | - | `[ ]` |
+| [09 - Pro Labs](#09---pro-labs) | - | 3 labs | `[ ]` |
+| [10 - Labs Perso](#10---labs-perso) | - | 1 lab | `[ ]` |
 
 ---
 
 ## 00 - Bonus
 
 ### Assembly (hors roadmap CPTS)
-- [x] [Intro to Assembly Language](00-bonus/assembly/intro-to-assembly-language.md) | [HTB Academy](https://academy.hackthebox.com/module/details/85)
-- [x] [Shellcoding](00-bonus/assembly/shellcoding.md)
-- [x] [Shellcodes Reference](00-bonus/assembly/shellcodes-reference.md)
+- [x] [Intro to Assembly Language](00-bonus/assembly/cours/intro-to-assembly-language.md) | [HTB Academy](https://academy.hackthebox.com/module/details/85)
+- [x] [Shellcoding](00-bonus/assembly/cours/shellcoding.md)
+- [x] [Shellcodes Reference](00-bonus/assembly/cours/shellcodes-reference.md)
 
-### Ressources associées
+### Ressources associees
 
 #### Machines HTB
 
-| # | Machine | Difficulté | Statut |
+| # | Machine | Difficulte | Statut |
 |---|---------|------------|--------|
-| 1 | [Buff](https://app.hackthebox.com/machines/263) | Easy | [ ] |
+| 1 | [Buff](https://app.hackthebox.com/machines/263) | Easy | [x] |
 | 2 | [Frolic](https://app.hackthebox.com/machines/158) | Easy | [ ] |
 | 3 | [Irked](https://app.hackthebox.com/machines/163) | Easy | [ ] |
 | 4 | [Nest](https://app.hackthebox.com/machines/225) | Easy | [ ] |
@@ -68,7 +70,7 @@
 
 #### Challenges HTB (Reversing)
 
-| # | Challenge | Difficulté | Statut |
+| # | Challenge | Difficulte | Statut |
 |---|-----------|------------|--------|
 | 1 | [The Art of Reversing](https://app.hackthebox.com/challenges/2) | Easy | [ ] |
 | 2 | [Tear Or Dear](https://app.hackthebox.com/challenges/3) | Easy | [ ] |
@@ -109,14 +111,14 @@
 | # | Plateforme | URL | Description |
 |---|-----------|-----|-------------|
 | 1 | pwnable.kr | http://pwnable.kr/ | Challenges shellcoding/exploitation |
-| 2 | pwnable.tw | https://pwnable.tw/ | Challenges avancés |
+| 2 | pwnable.tw | https://pwnable.tw/ | Challenges avances |
 | 3 | Exploit Education | https://exploit.education/ | VMs Phoenix/Protostar/Fusion |
 | 4 | ROP Emporium | https://ropemporium.com/ | Challenges ROP progressifs |
-| 5 | Nightmare | https://guyinatuxedo.github.io/ | Cours/challenges pwn par difficulté |
+| 5 | Nightmare | https://guyinatuxedo.github.io/ | Cours/challenges pwn par difficulte |
 
 #### Modules HTB Academy (Binary Exploitation path)
 
-| # | Module | Difficulté | Tier | Statut |
+| # | Module | Difficulte | Tier | Statut |
 |---|--------|------------|------|--------|
 | 1 | [Intro to Assembly Language](https://academy.hackthebox.com/course/preview/intro-to-assembly-language) | Medium | II | [x] |
 | 2 | [Stack-Based Buffer Overflows on Linux x86](https://academy.hackthebox.com/course/preview/stack-based-buffer-overflows-on-linux-x86) | Medium | II | [ ] |
@@ -125,108 +127,90 @@
 
 ---
 
-## 01 - Getting Started
+## 01 - Introduction
 
 ### Cours
-- [ ] [Penetration Testing Process](01-getting-started/cours/penetration-testing-process.md) | [HTB Academy](https://academy.hackthebox.com/module/details/90)
-- [ ] [Footprinting](01-getting-started/cours/footprinting.md) | [HTB Academy](https://academy.hackthebox.com/module/details/112)
-- [ ] [Information Gathering - Web Edition](01-getting-started/cours/information-gathering-web-edition.md) | [HTB Academy](https://academy.hackthebox.com/module/details/144)
-- [ ] [Network Enumeration with Nmap](01-getting-started/cours/network-enumeration-nmap.md) | [HTB Academy](https://academy.hackthebox.com/module/details/19)
-- [ ] [Vulnerability Assessment](01-getting-started/cours/vulnerability-assessment.md) | [HTB Academy](https://academy.hackthebox.com/module/details/108)
+- [x] [Getting Started](01-introduction/cours/01-getting-started/) | [HTB Academy](https://academy.hackthebox.com/module/details/77)
+- [ ] [Penetration Testing Process](01-introduction/cours/02-penetration-testing-process.md) | [HTB Academy](https://academy.hackthebox.com/module/details/90)
 
 ### Boxes
-- [ ] [Blue](01-getting-started/boxes/blue.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Blue)
-- [ ] [Devel](01-getting-started/boxes/devel.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Devel)
-- [ ] [Jerry](01-getting-started/boxes/jerry.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Jerry)
-- [ ] [Lame](01-getting-started/boxes/lame.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Lame)
-- [ ] [Legacy](01-getting-started/boxes/legacy.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Legacy)
-- [ ] [Mirai](01-getting-started/boxes/mirai.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Mirai)
-- [ ] [Netmon](01-getting-started/boxes/netmon.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Netmon)
-- [ ] [Nibbles](01-getting-started/boxes/nibbles.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Nibbles)
-- [ ] [Shocker](01-getting-started/boxes/shocker.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Shocker)
+- [ ] [Lame](01-introduction/boxes/lame.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Lame)
+- [ ] [Legacy](01-introduction/boxes/legacy.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Legacy)
+- [ ] [Blue](01-introduction/boxes/blue.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Blue)
+- [ ] [Devel](01-introduction/boxes/devel.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Devel)
+- [ ] [Jerry](01-introduction/boxes/jerry.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Jerry)
+- [ ] [Nibbles](01-introduction/boxes/nibbles.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Nibbles)
+- [ ] [Shocker](01-introduction/boxes/shocker.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Shocker)
+- [ ] [Mirai](01-introduction/boxes/mirai.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Mirai)
+- [ ] [Netmon](01-introduction/boxes/netmon.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Netmon)
 
 ---
 
-## 02 - Exploitation
+## 02 - Reconnaissance
 
 ### Cours
-- [ ] [Shells & Payloads](02-exploitation/cours/shells-payloads.md) | [HTB Academy](https://academy.hackthebox.com/module/details/115)
-- [ ] [Using the Metasploit Framework](02-exploitation/cours/using-the-metasploit-framework.md) | [HTB Academy](https://academy.hackthebox.com/module/details/39)
-- [ ] [File Transfers](02-exploitation/cours/file-transfers.md) | [HTB Academy](https://academy.hackthebox.com/module/details/24)
-- [ ] [Password Attacks](02-exploitation/cours/password-attacks.md) | [HTB Academy](https://academy.hackthebox.com/module/details/147)
-- [ ] [Attacking Common Services](02-exploitation/cours/attacking-common-services.md) | [HTB Academy](https://academy.hackthebox.com/module/details/116)
-
-### Boxes
-- [ ] [Irked](02-exploitation/boxes/irked.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Irked)
-- [ ] [Keeper](02-exploitation/boxes/keeper.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Keeper)
-- [ ] [Vaccine](02-exploitation/boxes/vaccine.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Vaccine)
+- [ ] [Network Enumeration with Nmap](02-reconnaissance/cours/01-network-enumeration-nmap.md) | [HTB Academy](https://academy.hackthebox.com/module/details/19)
+- [ ] [Footprinting](02-reconnaissance/cours/02-footprinting.md) | [HTB Academy](https://academy.hackthebox.com/module/details/112)
+- [ ] [Information Gathering - Web Edition](02-reconnaissance/cours/03-information-gathering-web-edition.md) | [HTB Academy](https://academy.hackthebox.com/module/details/144)
+- [ ] [Vulnerability Assessment](02-reconnaissance/cours/04-vulnerability-assessment.md) | [HTB Academy](https://academy.hackthebox.com/module/details/108)
 
 ---
 
-## 03 - Active Directory
+## 03 - Exploitation
 
 ### Cours
-- [ ] [Active Directory Enumeration & Attacks](03-active-directory/cours/active-directory-enumeration-attacks.md) | [HTB Academy](https://academy.hackthebox.com/module/details/143)
+- [ ] [Using the Metasploit Framework](03-exploitation/cours/01-using-the-metasploit-framework.md) | [HTB Academy](https://academy.hackthebox.com/module/details/39)
+- [ ] [Shells & Payloads](03-exploitation/cours/02-shells-payloads.md) | [HTB Academy](https://academy.hackthebox.com/module/details/115)
+- [ ] [File Transfers](03-exploitation/cours/03-file-transfers.md) | [HTB Academy](https://academy.hackthebox.com/module/details/24)
+- [ ] [Password Attacks](03-exploitation/cours/04-password-attacks.md) | [HTB Academy](https://academy.hackthebox.com/module/details/147)
+- [ ] [Attacking Common Services](03-exploitation/cours/05-attacking-common-services.md) | [HTB Academy](https://academy.hackthebox.com/module/details/116)
 
 ### Boxes
-- [ ] [Administrator](03-active-directory/boxes/administrator.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Administrator)
-- [ ] [Bastion](03-active-directory/boxes/bastion.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Bastion)
-- [ ] [Cascade](03-active-directory/boxes/cascade.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Cascade)
-- [ ] [Cicada](03-active-directory/boxes/cicada.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Cicada)
-- [ ] [Conceal](03-active-directory/boxes/conceal.md) - Windows / Hard | [HTB](https://app.hackthebox.com/machines/Conceal)
-- [ ] [Escape](03-active-directory/boxes/escape.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Escape)
-- [ ] [Forest](03-active-directory/boxes/forest.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Forest)
-- [ ] [Intelligence](03-active-directory/boxes/intelligence.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Intelligence)
-- [ ] [Monteverde](03-active-directory/boxes/monteverde.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Monteverde)
-- [ ] [Resolute](03-active-directory/boxes/resolute.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Resolute)
-- [ ] [Return](03-active-directory/boxes/return.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Return)
-- [ ] [Sauna](03-active-directory/boxes/sauna.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Sauna)
-- [ ] [Support](03-active-directory/boxes/support.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Support)
+- [ ] [Vaccine](03-exploitation/boxes/vaccine.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Vaccine)
+- [ ] [Irked](03-exploitation/boxes/irked.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Irked)
+- [ ] [Keeper](03-exploitation/boxes/keeper.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Keeper)
 
 ---
 
 ## 04 - Web Attacks
 
 ### Cours
-- [ ] [Using Web Proxies](04-web-attacks/cours/using-web-proxies.md) | [HTB Academy](https://academy.hackthebox.com/module/details/110)
-- [ ] [Attacking Web Applications with Ffuf](04-web-attacks/cours/attacking-web-applications-ffuf.md) | [HTB Academy](https://academy.hackthebox.com/module/details/54)
-- [ ] [Login Brute Forcing](04-web-attacks/cours/login-brute-forcing.md) | [HTB Academy](https://academy.hackthebox.com/module/details/57)
-- [ ] [SQL Injection Fundamentals](04-web-attacks/cours/sql-injection-fundamentals.md) | [HTB Academy](https://academy.hackthebox.com/module/details/33)
-- [ ] [SQLMap Essentials](04-web-attacks/cours/sqlmap-essentials.md) | [HTB Academy](https://academy.hackthebox.com/module/details/58)
-- [ ] [Cross-Site Scripting (XSS)](04-web-attacks/cours/cross-site-scripting-xss.md) | [HTB Academy](https://academy.hackthebox.com/module/details/103)
-- [ ] [Command Injections](04-web-attacks/cours/command-injections.md) | [HTB Academy](https://academy.hackthebox.com/module/details/109)
-- [ ] [File Inclusion](04-web-attacks/cours/file-inclusion.md) | [HTB Academy](https://academy.hackthebox.com/module/details/23)
-- [ ] [File Upload Attacks](04-web-attacks/cours/file-upload-attacks.md) | [HTB Academy](https://academy.hackthebox.com/module/details/136)
-- [ ] [Web Attacks](04-web-attacks/cours/web-attacks.md) | [HTB Academy](https://academy.hackthebox.com/module/details/134)
-- [ ] [Attacking Common Applications](04-web-attacks/cours/attacking-common-applications.md) | [HTB Academy](https://academy.hackthebox.com/module/details/113)
+- [ ] [Using Web Proxies](04-web-attacks/cours/01-using-web-proxies.md) | [HTB Academy](https://academy.hackthebox.com/module/details/110)
+- [ ] [Attacking Web Applications with Ffuf](04-web-attacks/cours/02-attacking-web-applications-ffuf.md) | [HTB Academy](https://academy.hackthebox.com/module/details/54)
+- [ ] [Login Brute Forcing](04-web-attacks/cours/03-login-brute-forcing.md) | [HTB Academy](https://academy.hackthebox.com/module/details/57)
+- [ ] [SQL Injection Fundamentals](04-web-attacks/cours/04-sql-injection-fundamentals.md) | [HTB Academy](https://academy.hackthebox.com/module/details/33)
+- [ ] [SQLMap Essentials](04-web-attacks/cours/05-sqlmap-essentials.md) | [HTB Academy](https://academy.hackthebox.com/module/details/58)
+- [ ] [Cross-Site Scripting (XSS)](04-web-attacks/cours/06-cross-site-scripting-xss.md) | [HTB Academy](https://academy.hackthebox.com/module/details/103)
+- [ ] [Command Injections](04-web-attacks/cours/07-command-injections.md) | [HTB Academy](https://academy.hackthebox.com/module/details/109)
+- [ ] [File Inclusion](04-web-attacks/cours/08-file-inclusion.md) | [HTB Academy](https://academy.hackthebox.com/module/details/23)
+- [ ] [File Upload Attacks](04-web-attacks/cours/09-file-upload-attacks.md) | [HTB Academy](https://academy.hackthebox.com/module/details/136)
+- [ ] [Web Attacks](04-web-attacks/cours/10-web-attacks.md) | [HTB Academy](https://academy.hackthebox.com/module/details/134)
+- [ ] [Attacking Common Applications](04-web-attacks/cours/11-attacking-common-applications.md) | [HTB Academy](https://academy.hackthebox.com/module/details/113)
 
 ### Boxes
 - [ ] [Bashed](04-web-attacks/boxes/bashed.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Bashed)
-- [ ] [Cronos](04-web-attacks/boxes/cronos.md) - Linux / Medium | [HTB](https://app.hackthebox.com/machines/Cronos)
 - [ ] [Goodgames](04-web-attacks/boxes/goodgames.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/GoodGames)
 - [ ] [Horizontall](04-web-attacks/boxes/horizontall.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Horizontall)
-- [ ] [Meta](04-web-attacks/boxes/meta.md) - Linux / Medium | [HTB](https://app.hackthebox.com/machines/Meta)
 - [ ] [OpenSource](04-web-attacks/boxes/opensource.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/OpenSource)
 - [ ] [Pilgrimage](04-web-attacks/boxes/pilgrimage.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Pilgrimage)
-- [ ] [Popcorn](04-web-attacks/boxes/popcorn.md) - Linux / Medium | [HTB](https://app.hackthebox.com/machines/Popcorn)
 - [ ] [Precious](04-web-attacks/boxes/precious.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Precious)
 - [ ] [RedPanda](04-web-attacks/boxes/redpanda.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/RedPanda)
-- [ ] [Sniper](04-web-attacks/boxes/sniper.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Sniper)
 - [ ] [Soccer](04-web-attacks/boxes/soccer.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Soccer)
 - [ ] [Trick](04-web-attacks/boxes/trick.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Trick)
+- [ ] [Cronos](04-web-attacks/boxes/cronos.md) - Linux / Medium | [HTB](https://app.hackthebox.com/machines/Cronos)
+- [ ] [Meta](04-web-attacks/boxes/meta.md) - Linux / Medium | [HTB](https://app.hackthebox.com/machines/Meta)
+- [ ] [Popcorn](04-web-attacks/boxes/popcorn.md) - Linux / Medium | [HTB](https://app.hackthebox.com/machines/Popcorn)
+- [ ] [Sniper](04-web-attacks/boxes/sniper.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Sniper)
 
 ---
 
 ## 05 - Privilege Escalation
 
 ### Cours
-- [ ] [Linux Privilege Escalation](05-privilege-escalation/cours/linux-privilege-escalation.md) | [HTB Academy](https://academy.hackthebox.com/module/details/51)
-- [ ] [Windows Privilege Escalation](05-privilege-escalation/cours/windows-privilege-escalation.md) | [HTB Academy](https://academy.hackthebox.com/module/details/67)
+- [ ] [Linux Privilege Escalation](05-privilege-escalation/cours/01-linux-privilege-escalation.md) | [HTB Academy](https://academy.hackthebox.com/module/details/51)
+- [ ] [Windows Privilege Escalation](05-privilege-escalation/cours/02-windows-privilege-escalation.md) | [HTB Academy](https://academy.hackthebox.com/module/details/67)
 
 ### Boxes
-- [ ] [Access](05-privilege-escalation/boxes/access.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Access)
-- [ ] [Arctic](05-privilege-escalation/boxes/arctic.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Arctic)
-- [ ] [Bastard](05-privilege-escalation/boxes/bastard.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Bastard)
 - [ ] [Beep](05-privilege-escalation/boxes/beep.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Beep)
 - [ ] [Grandpa](05-privilege-escalation/boxes/grandpa.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Grandpa)
 - [ ] [Granny](05-privilege-escalation/boxes/granny.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Granny)
@@ -234,38 +218,63 @@
 - [ ] [Postman](05-privilege-escalation/boxes/postman.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Postman)
 - [ ] [Sense](05-privilege-escalation/boxes/sense.md) - FreeBSD / Easy | [HTB](https://app.hackthebox.com/machines/Sense)
 - [ ] [Valentine](05-privilege-escalation/boxes/valentine.md) - Linux / Easy | [HTB](https://app.hackthebox.com/machines/Valentine)
+- [ ] [Access](05-privilege-escalation/boxes/access.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Access)
+- [ ] [Arctic](05-privilege-escalation/boxes/arctic.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Arctic)
+- [ ] [Bastard](05-privilege-escalation/boxes/bastard.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Bastard)
 
 ---
 
-## 06 - Pivoting
+## 06 - Active Directory
 
 ### Cours
-- [ ] [Pivoting, Tunneling and Port Forwarding](06-pivoting/cours/pivoting-tunneling-port-forwarding.md) | [HTB Academy](https://academy.hackthebox.com/module/details/158)
+- [ ] [Active Directory Enumeration & Attacks](06-active-directory/cours/01-active-directory-enumeration-attacks.md) | [HTB Academy](https://academy.hackthebox.com/module/details/143)
 
 ### Boxes
-- [ ] [Reddish](06-pivoting/boxes/reddish.md) - Linux / Insane | [HTB](https://app.hackthebox.com/machines/Reddish)
+- [ ] [Forest](06-active-directory/boxes/forest.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Forest)
+- [ ] [Sauna](06-active-directory/boxes/sauna.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Sauna)
+- [ ] [Return](06-active-directory/boxes/return.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Return)
+- [ ] [Support](06-active-directory/boxes/support.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Support)
+- [ ] [Bastion](06-active-directory/boxes/bastion.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Bastion)
+- [ ] [Cicada](06-active-directory/boxes/cicada.md) - Windows / Easy | [HTB](https://app.hackthebox.com/machines/Cicada)
+- [ ] [Resolute](06-active-directory/boxes/resolute.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Resolute)
+- [ ] [Monteverde](06-active-directory/boxes/monteverde.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Monteverde)
+- [ ] [Intelligence](06-active-directory/boxes/intelligence.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Intelligence)
+- [ ] [Cascade](06-active-directory/boxes/cascade.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Cascade)
+- [ ] [Escape](06-active-directory/boxes/escape.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Escape)
+- [ ] [Administrator](06-active-directory/boxes/administrator.md) - Windows / Medium | [HTB](https://app.hackthebox.com/machines/Administrator)
+- [ ] [Conceal](06-active-directory/boxes/conceal.md) - Windows / Hard | [HTB](https://app.hackthebox.com/machines/Conceal)
 
 ---
 
-## 07 - Enterprise & Reporting
+## 07 - Pivoting
 
 ### Cours
-- [ ] [Attacking Enterprise Networks](07-enterprise-reporting/cours/attacking-enterprise-networks.md) | [HTB Academy](https://academy.hackthebox.com/module/details/163)
-- [ ] [Documentation & Reporting](07-enterprise-reporting/cours/documentation-reporting.md) | [HTB Academy](https://academy.hackthebox.com/module/details/162)
+- [ ] [Pivoting, Tunneling and Port Forwarding](07-pivoting/cours/01-pivoting-tunneling-port-forwarding.md) | [HTB Academy](https://academy.hackthebox.com/module/details/158)
+
+### Boxes
+- [ ] [Reddish](07-pivoting/boxes/reddish.md) - Linux / Insane | [HTB](https://app.hackthebox.com/machines/Reddish)
 
 ---
 
-## 08 - Pro Labs
+## 08 - Enterprise & Reporting
 
-- [ ] [Dante](08-pro-labs/dante.md) - Intermediate | [HTB](https://app.hackthebox.com/prolabs/overview/dante)
-- [ ] [Offshore](08-pro-labs/offshore.md) - Advanced | [HTB](https://app.hackthebox.com/prolabs/overview/offshore)
-- [ ] [Zephyr](08-pro-labs/zephyr.md) - Advanced | [HTB](https://app.hackthebox.com/prolabs/overview/zephyr)
+### Cours
+- [ ] [Attacking Enterprise Networks](08-enterprise-reporting/cours/01-attacking-enterprise-networks.md) | [HTB Academy](https://academy.hackthebox.com/module/details/163)
+- [ ] [Documentation & Reporting](08-enterprise-reporting/cours/02-documentation-reporting.md) | [HTB Academy](https://academy.hackthebox.com/module/details/162)
 
 ---
 
-## 09 - Labs Perso
+## 09 - Pro Labs
 
-- [ ] [GOAD - Game of Active Directory](09-labs-perso/goad.md) | [GitHub](https://github.com/Orange-Cyberdefense/GOAD)
+- [ ] [Dante](09-pro-labs/dante.md) - Intermediate | [HTB](https://app.hackthebox.com/prolabs/overview/dante)
+- [ ] [Offshore](09-pro-labs/offshore.md) - Advanced | [HTB](https://app.hackthebox.com/prolabs/overview/offshore)
+- [ ] [Zephyr](09-pro-labs/zephyr.md) - Advanced | [HTB](https://app.hackthebox.com/prolabs/overview/zephyr)
+
+---
+
+## 10 - Labs Perso
+
+- [ ] [GOAD - Game of Active Directory](10-labs-perso/goad.md) | [GitHub](https://github.com/Orange-Cyberdefense/GOAD)
 
 ---
 
@@ -273,10 +282,9 @@
 
 | Ressource | Description |
 |-----------|-------------|
-| [Méthodologie](methodologie.md) | Checklist pentest step-by-step |
-| [Journal](journal.md) | Log de progression par session |
+| [Methodologie](methodologie.md) | Checklist pentest step-by-step |
 | [Ressources](ressources.md) | Bookmarks et outils essentiels |
-| [Wordlists](wordlists.md) | Référence des wordlists par usage |
+| [Wordlists](wordlists.md) | Reference des wordlists par usage |
 
 ### Cheatsheets transversales
 
@@ -302,10 +310,9 @@
 
 ## Comment utiliser ce repo
 
-1. **Méthodologie** : Suivre `methodologie.md` comme checklist sur chaque box
+1. **Methodologie** : Suivre `methodologie.md` comme checklist sur chaque box
 2. **Cheatsheets** : Chaque cours et box a son propre fichier `.md`
-3. **Progression** : Cocher les `[ ]` -> `[x]` dans ce README au fur et à mesure
-4. **Journal** : Noter chaque session dans `journal.md`
-5. **Difficulté ressentie** : Noter `/10` dans chaque box pour suivre la progression
-6. **Templates** : Utiliser `TEMPLATE_COURS.md`, `TEMPLATE_BOX.md` ou `TEMPLATE_PROLAB.md` pour ajouter du contenu
-7. **Commit régulier** : Commiter après chaque cours/box terminé pour garder un historique
+3. **Progression** : Cocher les `[ ]` -> `[x]` dans ce README au fur et a mesure
+4. **Difficulte ressentie** : Noter `/10` dans chaque box pour suivre la progression
+5. **Templates** : Utiliser `TEMPLATE_COURS.md`, `TEMPLATE_BOX.md` ou `TEMPLATE_PROLAB.md` pour ajouter du contenu
+6. **Commit regulier** : Commiter apres chaque cours/box termine pour garder un historique

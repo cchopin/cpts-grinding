@@ -1,14 +1,14 @@
-# 03 - Active Directory
+# 06 - Active Directory
 
 ## Cours
 
 | # | Module | Statut |
 |---|--------|--------|
-| 1 | [AD Enumeration & Attacks](cours/active-directory-enumeration-attacks.md) | [ ] |
+| 1 | [AD Enumeration & Attacks](cours/01-active-directory-enumeration-attacks.md) | [ ] |
 
 ## Boxes
 
-| # | Box | OS | Difficulté | User | Root |
+| # | Box | OS | Difficulte | User | Root |
 |---|-----|----|------------|------|------|
 | 1 | [Forest](boxes/forest.md) | Windows | Easy | [ ] | [ ] |
 | 2 | [Sauna](boxes/sauna.md) | Windows | Easy | [ ] | [ ] |
@@ -24,9 +24,9 @@
 | 12 | [Administrator](boxes/administrator.md) | Windows | Medium | [ ] | [ ] |
 | 13 | [Conceal](boxes/conceal.md) | Windows | Hard | [ ] | [ ] |
 
-## Techniques clés à maîtriser
+## Techniques cles
 
-- Énumération LDAP / SMB / RPC
+- Enumeration LDAP / SMB / RPC
 - Kerberoasting / AS-REP Roasting
 - Pass-the-Hash / Pass-the-Ticket
 - BloodHound / SharpHound
