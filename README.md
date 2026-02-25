@@ -30,11 +30,11 @@
 - [x] [Shellcoding](00-bonus/assembly/cours/shellcoding.md)
 - [x] [Shellcodes Reference](00-bonus/assembly/cours/shellcodes-reference.md)
 
-### Ressources associees
+### Ressources associées
 
 #### Machines HTB
 
-| # | Machine | Difficulte | Statut |
+| # | Machine | Difficulté | Statut |
 |---|---------|------------|--------|
 | 1 | [Buff](https://app.hackthebox.com/machines/263) | Easy | [x] |
 | 2 | [Frolic](https://app.hackthebox.com/machines/158) | Easy | [ ] |
@@ -70,7 +70,7 @@
 
 #### Challenges HTB (Reversing)
 
-| # | Challenge | Difficulte | Statut |
+| # | Challenge | Difficulté | Statut |
 |---|-----------|------------|--------|
 | 1 | [The Art of Reversing](https://app.hackthebox.com/challenges/2) | Easy | [ ] |
 | 2 | [Tear Or Dear](https://app.hackthebox.com/challenges/3) | Easy | [ ] |
@@ -111,14 +111,14 @@
 | # | Plateforme | URL | Description |
 |---|-----------|-----|-------------|
 | 1 | pwnable.kr | http://pwnable.kr/ | Challenges shellcoding/exploitation |
-| 2 | pwnable.tw | https://pwnable.tw/ | Challenges avances |
+| 2 | pwnable.tw | https://pwnable.tw/ | Challenges avancés |
 | 3 | Exploit Education | https://exploit.education/ | VMs Phoenix/Protostar/Fusion |
 | 4 | ROP Emporium | https://ropemporium.com/ | Challenges ROP progressifs |
-| 5 | Nightmare | https://guyinatuxedo.github.io/ | Cours/challenges pwn par difficulte |
+| 5 | Nightmare | https://guyinatuxedo.github.io/ | Cours/challenges pwn par difficulté |
 
 #### Modules HTB Academy (Binary Exploitation path)
 
-| # | Module | Difficulte | Tier | Statut |
+| # | Module | Difficulté | Tier | Statut |
 |---|--------|------------|------|--------|
 | 1 | [Intro to Assembly Language](https://academy.hackthebox.com/course/preview/intro-to-assembly-language) | Medium | II | [x] |
 | 2 | [Stack-Based Buffer Overflows on Linux x86](https://academy.hackthebox.com/course/preview/stack-based-buffer-overflows-on-linux-x86) | Medium | II | [ ] |
@@ -282,9 +282,9 @@
 
 | Ressource | Description |
 |-----------|-------------|
-| [Methodologie](methodologie.md) | Checklist pentest step-by-step |
+| [Méthodologie](methodologie.md) | Checklist pentest step-by-step |
 | [Ressources](ressources.md) | Bookmarks et outils essentiels |
-| [Wordlists](wordlists.md) | Reference des wordlists par usage |
+| [Wordlists](wordlists.md) | Référence des wordlists par usage |
 
 ### Cheatsheets transversales
 
@@ -294,7 +294,7 @@
 | [Reverse Shells](cheatsheets/reverse-shells.md) | One-liners, msfvenom, upgrade shell |
 | [File Transfers](cheatsheets/file-transfers.md) | Transferts attacker <-> cible |
 | [Common Ports](cheatsheets/common-ports.md) | Ports, services et quoi tester |
-| [Enumeration](cheatsheets/enumeration.md) | Commandes d'enum par service |
+| [Énumération](cheatsheets/enumeration.md) | Commandes d'enum par service |
 | [Payloads & Exploits](cheatsheets/payloads.md) | Searchsploit, Metasploit, web shells, SQLi, XSS, LFI |
 | [Privilege Escalation](cheatsheets/privilege-escalation.md) | sudo, SUID, cron, tokens Windows, potatoes |
 | [Assembly & Shellcoding](cheatsheets/assembly.md) | Registres, instructions x86_64, GDB, shellcraft, msfvenom |
@@ -310,9 +310,9 @@
 
 ## Comment utiliser ce repo
 
-1. **Methodologie** : Suivre `methodologie.md` comme checklist sur chaque box
+1. **Méthodologie** : Suivre `methodologie.md` comme checklist sur chaque box
 2. **Cheatsheets** : Chaque cours et box a son propre fichier `.md`
-3. **Progression** : Cocher les `[ ]` -> `[x]` dans ce README au fur et a mesure
-4. **Difficulte ressentie** : Noter `/10` dans chaque box pour suivre la progression
+3. **Progression** : Cocher les `[ ]` -> `[x]` dans ce README au fur et à mesure
+4. **Difficulté ressentie** : Noter `/10` dans chaque box pour suivre la progression
 5. **Templates** : Utiliser `TEMPLATE_COURS.md`, `TEMPLATE_BOX.md` ou `TEMPLATE_PROLAB.md` pour ajouter du contenu
-6. **Commit regulier** : Commiter apres chaque cours/box termine pour garder un historique
+6. **Commit régulier** : Commiter après chaque cours/box terminé pour garder un historique

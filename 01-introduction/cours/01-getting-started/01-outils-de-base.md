@@ -1,50 +1,50 @@
 # Outils de base
 
-[<< Retour](README.md) | [Suivant : Enumeration de services >>](02-enumeration-services.md)
+[<< Retour](README.md) | [Suivant : Énumération de services >>](02-enumeration-services.md)
 
 ---
 
 ## SSH
 
-Protocole sur le port 22 - acces distant securise. Sert de "jump host" pour pivoter, transferer des outils, poser de la persistence.
+Protocole sur le port 22 - accès distant sécurisé. Sert de "jump host" pour pivoter, transférer des outils, poser de la persistence.
 
 ```bash
 ssh user@TARGET_IP                    # connexion basique
 ssh user@TARGET_IP -p 2222            # port custom
-ssh user@TARGET_IP -i id_rsa          # avec cle privee
+ssh user@TARGET_IP -i id_rsa          # avec clé privée
 ```
 
 ---
 
 ## Netcat
 
-Utilitaire reseau pour interagir avec les ports TCP/UDP. Usages principaux : banner grabbing, reverse/bind shells, transfert de fichiers.
+Utilitaire réseau pour interagir avec les ports TCP/UDP. Usages principaux : banner grabbing, reverse/bind shells, transfert de fichiers.
 
 ```bash
 nc -nv TARGET_IP 22                   # banner grabbing
 nc -lvnp 4444                         # listener (reverse shell)
 ```
 
-Flags a retenir :
-- `-l` : mode ecoute (listen)
+Flags à retenir :
+- `-l` : mode écoute (listen)
 - `-v` : verbose
-- `-n` : pas de resolution DNS (plus rapide)
-- `-p` : port d'ecoute
+- `-n` : pas de résolution DNS (plus rapide)
+- `-p` : port d'écoute
 
-**Socat** : alternative a netcat avec plus de fonctionnalites (forwarding, TTY complet). Un binaire standalone peut etre transfere sur la cible.
+**Socat** : alternative à netcat avec plus de fonctionnalités (forwarding, TTY complet). Un binaire standalone peut être transféré sur la cible.
 
 ---
 
 ## tmux
 
-Multiplexeur de terminal - essentiel pour gerer plusieurs taches en parallele pendant un pentest (listener + enumeration + exploit).
+Multiplexeur de terminal - essentiel pour gérer plusieurs tâches en parallèle pendant un pentest (listener + énumération + exploit).
 
-Raccourcis de base (prefixe `Ctrl+B`) :
+Raccourcis de base (préfixe `Ctrl+B`) :
 
 | Raccourci | Action |
 |-----------|--------|
-| `c` | Nouvelle fenetre |
-| `1`, `2`, ... | Changer de fenetre |
+| `c` | Nouvelle fenêtre |
+| `1`, `2`, ... | Changer de fenêtre |
 | `%` | Split vertical |
 | `"` | Split horizontal |
 | fleches | Naviguer entre les panes |
@@ -53,9 +53,9 @@ Raccourcis de base (prefixe `Ctrl+B`) :
 
 ## Vim
 
-Editeur clavier-only, souvent le seul disponible sur un systeme compromis.
+Éditeur clavier-only, souvent le seul disponible sur un système compromis.
 
-Minimum a connaitre :
+Minimum à connaître :
 - `i` : mode insertion
 - `Esc` : retour mode normal
 - `:wq` : sauver et quitter

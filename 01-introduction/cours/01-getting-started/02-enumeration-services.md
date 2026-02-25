@@ -1,13 +1,13 @@
-# Enumeration de services
+# Énumération de services
 
-[<< Precedent : Outils de base](01-outils-de-base.md) | [Suivant : Enumeration web >>](03-enumeration-web.md)
+[<< Précédent : Outils de base](01-outils-de-base.md) | [Suivant : Énumération web >>](03-enumeration-web.md)
 
 ---
 
 ## Nmap - les scans essentiels
 
 ```bash
-# Scan rapide (top 1000 ports, versions + scripts par defaut)
+# Scan rapide (top 1000 ports, versions + scripts par défaut)
 nmap -sV -sC TARGET_IP
 
 # Scan complet tous les ports
@@ -16,31 +16,31 @@ nmap -sV -sC -p- TARGET_IP
 # Scan initial + sauvegarde de tous les formats de sortie
 nmap -sV --open -oA scan_initial TARGET_IP
 
-# Script specifique
+# Script spécifique
 nmap --script smb-os-discovery.nse -p445 TARGET_IP
 
-# Enumeration HTTP
+# Énumération HTTP
 nmap -sV --script=http-enum TARGET_IP
 ```
 
-**Points cles :**
+**Points clés :**
 - Sans option, nmap scanne les 1000 ports TCP les plus courants
-- `-sC` : scripts par defaut (info supplementaire, plus lent)
+- `-sC` : scripts par défaut (info supplémentaire, plus lent)
 - `-sV` : fingerprint des services (version)
 - `-p-` : tous les 65535 ports
 - `-oA` : sauvegarde en XML, greppable et texte (toujours le faire)
-- La version d'un service peut reveler l'OS (ex: `OpenSSH 7.2p2 Ubuntu 4ubuntu2.8` = Ubuntu Xenial)
-- Lancer le scan complet `-p-` en arriere-plan pendant l'enumeration manuelle
+- La version d'un service peut révéler l'OS (ex: `OpenSSH 7.2p2 Ubuntu 4ubuntu2.8` = Ubuntu Xenial)
+- Lancer le scan complet `-p-` en arrière-plan pendant l'énumération manuelle
 
 ---
 
 ## Banner Grabbing
 
-Technique pour identifier rapidement un service en recuperant sa banniere.
+Technique pour identifier rapidement un service en récupérant sa bannière.
 
 ```bash
-nc -nv TARGET_IP 22                   # banniere SSH
-nc -nv TARGET_IP 80                   # banniere HTTP
+nc -nv TARGET_IP 22                   # bannière SSH
+nc -nv TARGET_IP 80                   # bannière HTTP
 nmap -sV --script=banner -p21 TARGET_IP
 ```
 
@@ -54,7 +54,7 @@ ftp -p TARGET_IP
 # Commandes : ls, cd, get, put
 ```
 
-Toujours verifier si le login anonyme est active (`ftp-anon` dans les scripts nmap).
+Toujours vérifier si le login anonyme est activé (`ftp-anon` dans les scripts nmap).
 
 ---
 
@@ -65,7 +65,7 @@ smbclient -N -L \\\\TARGET_IP        # lister les shares (anonyme)
 smbclient -U user \\\\TARGET_IP\\share  # connexion avec creds
 ```
 
-Le script nmap `smb-os-discovery.nse` revele l'OS, le hostname, le workgroup. Vulnerabilites connues : EternalBlue (MS17-010) sur les vieux Windows.
+Le script nmap `smb-os-discovery.nse` révèle l'OS, le hostname, le workgroup. Vulnérabilités connues : EternalBlue (MS17-010) sur les vieux Windows.
 
 ---
 
@@ -76,4 +76,4 @@ snmpwalk -v 2c -c public TARGET_IP 1.3.6.1.2.1.1.5.0
 onesixtyone -c dict.txt TARGET_IP     # brute force community strings
 ```
 
-Versions 1 et 2c : community string en clair. Permet d'extraire des infos systeme (processes, routes, software, parfois des credentials en ligne de commande).
+Versions 1 et 2c : community string en clair. Permet d'extraire des infos système (processes, routes, software, parfois des credentials en ligne de commande).

@@ -94,7 +94,7 @@ scp user@TARGET_IP:/etc/passwd ./passwd
 
 ---
 
-## Base64 (pas de transfert reseau)
+## Base64 (pas de transfert réseau)
 
 ```bash
 # Encoder sur la source

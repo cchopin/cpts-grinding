@@ -1,0 +1,4 @@
+# Nmap 7.98 scan initiated Tue Feb 24 17:37:14 2026 as: nmap -oA nibbles_full_scan --open -sV -A 10.129.20.187
+Host: 10.129.20.187 ()	Status: Up
+Host: 10.129.20.187 ()	Ports: 22/open/tcp//ssh//OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)/, 80/open/tcp//http//Apache httpd 2.4.18 ((Ubuntu))/	Ignored State: closed (998)
+# Nmap done at Tue Feb 24 17:37:38 2026 -- 1 IP address (1 host up) scanned in 23.72 seconds

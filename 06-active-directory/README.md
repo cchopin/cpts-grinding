@@ -8,7 +8,7 @@
 
 ## Boxes
 
-| # | Box | OS | Difficulte | User | Root |
+| # | Box | OS | Difficulté | User | Root |
 |---|-----|----|------------|------|------|
 | 1 | [Forest](boxes/forest.md) | Windows | Easy | [ ] | [ ] |
 | 2 | [Sauna](boxes/sauna.md) | Windows | Easy | [ ] | [ ] |
@@ -24,9 +24,9 @@
 | 12 | [Administrator](boxes/administrator.md) | Windows | Medium | [ ] | [ ] |
 | 13 | [Conceal](boxes/conceal.md) | Windows | Hard | [ ] | [ ] |
 
-## Techniques cles
+## Techniques clés
 
-- Enumeration LDAP / SMB / RPC
+- Énumération LDAP / SMB / RPC
 - Kerberoasting / AS-REP Roasting
 - Pass-the-Hash / Pass-the-Ticket
 - BloodHound / SharpHound

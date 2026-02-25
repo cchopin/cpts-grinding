@@ -7,10 +7,10 @@
 | 1 | [Attacking Enterprise Networks](cours/01-attacking-enterprise-networks.md) | [ ] |
 | 2 | [Documentation & Reporting](cours/02-documentation-reporting.md) | [ ] |
 
-## Points cles
+## Points clés
 
-- Methodologie de pentest complete (de A a Z)
-- Redaction de rapports professionnels
+- Méthodologie de pentest complète (de A à Z)
+- Rédaction de rapports professionnels
 - Executive Summary vs Technical Findings
 - CVSS scoring
 - Remediation recommendations

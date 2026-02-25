@@ -9,7 +9,7 @@
 
 ## Boxes
 
-| # | Box | OS | Difficulte | User | Root |
+| # | Box | OS | Difficulté | User | Root |
 |---|-----|----|------------|------|------|
 | 1 | [Lame](boxes/lame.md) | Linux | Easy | [ ] | [ ] |
 | 2 | [Legacy](boxes/legacy.md) | Windows | Easy | [ ] | [ ] |
@@ -21,8 +21,8 @@
 | 8 | [Mirai](boxes/mirai.md) | Linux | Easy | [ ] | [ ] |
 | 9 | [Netmon](boxes/netmon.md) | Windows | Easy | [ ] | [ ] |
 
-## Ordre recommande
+## Ordre recommandé
 
 1. Getting Started (vue d'ensemble pentest)
-2. Penetration Testing Process (theorie, methodologie)
+2. Penetration Testing Process (théorie, méthodologie)
 3. Boxes : Lame -> Legacy -> Blue -> Devel -> Jerry -> Nibbles -> Shocker -> Mirai -> Netmon
