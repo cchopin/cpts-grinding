@@ -13,11 +13,11 @@
 |---|-----|----|------------|------|------|
 | 1 | [Lame](boxes/lame.md) | Linux | Easy | [ ] | [ ] |
 | 2 | [Legacy](boxes/legacy.md) | Windows | Easy | [ ] | [ ] |
-| 3 | [Blue](boxes/blue.md) | Windows | Easy | [ ] | [ ] |
-| 4 | [Devel](boxes/devel.md) | Windows | Easy | [ ] | [ ] |
-| 5 | [Jerry](boxes/jerry.md) | Windows | Easy | [ ] | [ ] |
+| 3 | [Blue](boxes/blue.md) | Windows | Easy | [x] | [x] |
+| 4 | [Devel](boxes/devel.md) | Windows | Easy | [x] | [x] |
+| 5 | [Jerry](boxes/jerry.md) | Windows | Easy | [x] | [x] |
 | 6 | [Nibbles](boxes/nibbles.md) | Linux | Easy | [ ] | [ ] |
-| 7 | [Shocker](boxes/shocker.md) | Linux | Easy | [ ] | [ ] |
+| 7 | [Shocker](boxes/shocker.md) | Linux | Easy | [x] | [x] |
 | 8 | [Mirai](boxes/mirai.md) | Linux | Easy | [ ] | [ ] |
 | 9 | [Netmon](boxes/netmon.md) | Windows | Easy | [ ] | [ ] |
 

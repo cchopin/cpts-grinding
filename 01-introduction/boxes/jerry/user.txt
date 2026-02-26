@@ -1,0 +1,8 @@
+admin
+both
+manager
+role
+role1
+root
+tomcat
+
