@@ -25,9 +25,9 @@ PORT     STATE SERVICE VERSION
 
 ### Analyse
 
-- **Apache 2.4.18** sur Ubuntu - version ancienne
-- **SSH sur le port 2222** (non standard) - OpenSSH 7.2p2
-- Surface d'attaque principale : le serveur web sur le port 80
+- **Apache 2.4.18** sur Ubuntu - version ancienne  
+- **SSH sur le port 2222** (non standard) - OpenSSH 7.2p2  
+- Surface d'attaque principale : le serveur web sur le port 80  
 
 ### Enumeration web
 
@@ -41,7 +41,8 @@ feroxbuster -u http://10.129.8.165/cgi-bin/ -w common.txt -x pl,cgi,sh -s 200,30
 200      GET        7l       18w      119c http://10.129.8.165/cgi-bin/user.sh
 ```
 
-> **Piege** : il faut impérativement mettre le `/` final dans l'URL (`/cgi-bin/` et pas `/cgi-bin`). Sans le slash, feroxbuster ne trouve rien car le serveur répond différemment - Apache traite `/cgi-bin` comme un fichier et non comme un répertoire.
+> **Piege** : il faut impérativement mettre le `/` final dans l'URL (`/cgi-bin/` et pas `/cgi-bin`).   
+Sans le slash, feroxbuster ne trouve rien car le serveur répond différemment - Apache traite `/cgi-bin` comme un fichier et non comme un répertoire.
 
 ---
 
